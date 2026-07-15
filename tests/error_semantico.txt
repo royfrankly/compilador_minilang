@@ -1,0 +1,99 @@
+INICIO
+// ---------------------------------------------------------
+// ARCHIVO DE PRUEBA: ERROR SEMÁNTICO
+// Estructural y léxicamente perfecto, pero rompe las reglas
+// de la tabla de símbolos (tipos incompatibles, re-declaración).
+// ---------------------------------------------------------
+
+ENTERO limite_inferior;
+ENTERO limite_superior;
+ENTERO contador_primos;
+ENTERO iterador_principal;
+ENTERO iterador_secundario;
+ENTERO es_primo;
+ENTERO residuo;
+ENTERO cociente;
+REAL promedio;
+REAL suma_total;
+REAL constante_optimizada;
+CADENA mensaje_inicio;
+CADENA mensaje_fin;
+BOOLEANO bandera_estado;
+
+// ERROR SEMÁNTICO 1: Re-declaración de una variable ya existente
+ENTERO limite_inferior;
+
+// ERROR SEMÁNTICO 2: Asignación de tipos incompatibles (Número a Cadena)
+mensaje_inicio = 1500;
+
+mensaje_fin = "Procesamiento completado con exito.";
+bandera_estado = VERDADERO;
+contador_primos = 0;
+suma_total = 0.0;
+
+// ERROR SEMÁNTICO 3: Uso de variable no declarada
+variable_fantasma = 10 * 5;
+
+// ERROR SEMÁNTICO 4: Operación matemática entre Cadena y Número
+constante_optimizada = mensaje_fin * 2.0 + 5.0 - 1.0;
+
+ENTERO calculo_pesado;
+calculo_pesado = 100 / 2 * 3 + 50 - 10;
+
+ESCRIBIR mensaje_inicio;
+ESCRIBIR "Valor optimizado 1 (debe ser 25):";
+ESCRIBIR constante_optimizada;
+
+limite_inferior = 2;
+limite_superior = 50;
+
+SI (limite_inferior > limite_superior)
+ESCRIBIR "Error: El limite inferior no puede ser mayor al superior.";
+bandera_estado = FALSO;
+SINO
+SI (limite_inferior < 0)
+ESCRIBIR "Error: Los limites deben ser estrictamente positivos.";
+bandera_estado = FALSO;
+FIN_SI
+FIN_SI
+
+// ERROR SEMÁNTICO 5: Condición en SI debe ser BOOLEANO, no ENTERO
+SI (limite_inferior)
+iterador_principal = limite_inferior;
+
+MIENTRAS (iterador_principal < limite_superior)
+  es_primo = 1;
+  iterador_secundario = 2;
+
+  MIENTRAS (iterador_secundario < iterador_principal)
+    cociente = iterador_principal / iterador_secundario;
+    residuo = iterador_principal - (cociente * iterador_secundario);
+
+    SI (residuo == 0)
+      es_primo = 0; 
+    FIN_SI
+
+    iterador_secundario = iterador_secundario + 1;
+  FIN_MIENTRAS
+
+  SI (es_primo == 1)
+    ESCRIBIR "Numero primo detectado en el sistema:";
+    ESCRIBIR iterador_principal;
+    contador_primos = contador_primos + 1;
+    suma_total = suma_total + iterador_principal;
+  FIN_SI
+
+  iterador_principal = iterador_principal + 1;
+FIN_MIENTRAS
+
+SI (contador_primos > 0)
+  promedio = suma_total / contador_primos;
+  ESCRIBIR "Total de numeros primos encontrados:";
+  ESCRIBIR contador_primos;
+FIN_SI
+
+
+FIN_SI
+
+ESCRIBIR mensaje_fin;
+FIN

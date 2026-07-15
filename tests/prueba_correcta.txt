@@ -1,0 +1,118 @@
+INICIO
+// ---------------------------------------------------------
+// PROGRAMA DE DEMOSTRACIÓN: SISTEMA AVANZADO MINILANG
+// Demuestra variables, tipos, condicionales anidados,
+// ciclos, matemática compleja y optimización de código.
+// ---------------------------------------------------------
+
+// 1. Declaración masiva de variables
+ENTERO limite_inferior;
+ENTERO limite_superior;
+ENTERO contador_primos;
+ENTERO iterador_principal;
+ENTERO iterador_secundario;
+ENTERO es_primo;
+ENTERO residuo;
+ENTERO cociente;
+REAL promedio;
+REAL suma_total;
+REAL constante_optimizada;
+CADENA mensaje_inicio;
+CADENA mensaje_fin;
+BOOLEANO bandera_estado;
+
+// 2. Inicialización de variables
+mensaje_inicio = "Iniciando el sistema avanzado de calculo matematico...";
+mensaje_fin = "Procesamiento completado con exito.";
+bandera_estado = VERDADERO;
+contador_primos = 0;
+suma_total = 0.0;
+
+// 3. Demostración de Plegado de Constantes (Optimizador)
+// El compilador reducirá todo esto a un solo valor final en C++
+constante_optimizada = 10.5 * 2.0 + 5.0 - 1.0;
+ENTERO calculo_pesado;
+calculo_pesado = 100 / 2 * 3 + 50 - 10;
+
+ESCRIBIR mensaje_inicio;
+ESCRIBIR "Valor optimizado 1 (debe ser 25):";
+ESCRIBIR constante_optimizada;
+ESCRIBIR "Valor optimizado 2 (debe ser 190):";
+ESCRIBIR calculo_pesado;
+
+// 4. Configuración de límites (simulando lectura de usuario)
+limite_inferior = 2;
+limite_superior = 50;
+
+// 5. Verificación de rangos con condicionales anidados
+SI (limite_inferior > limite_superior)
+ESCRIBIR "Error: El limite inferior no puede ser mayor al superior.";
+bandera_estado = FALSO;
+SINO
+SI (limite_inferior < 0)
+ESCRIBIR "Error: Los limites deben ser estrictamente positivos.";
+bandera_estado = FALSO;
+FIN_SI
+FIN_SI
+
+// 6. Bucle principal: Detección de números primos
+// Uso extensivo de ciclos anidados e iteradores
+SI (bandera_estado == VERDADERO)
+iterador_principal = limite_inferior;
+
+MIENTRAS (iterador_principal < limite_superior)
+  es_primo = 1;
+  iterador_secundario = 2;
+
+  // Algoritmo para verificar primalidad
+  MIENTRAS (iterador_secundario < iterador_principal)
+    
+    // Cálculo manual de módulo (residuo) simulando %
+    cociente = iterador_principal / iterador_secundario;
+    residuo = iterador_principal - (cociente * iterador_secundario);
+
+    SI (residuo == 0)
+      // Encontró un divisor, por lo tanto no es primo
+      es_primo = 0; 
+    FIN_SI
+
+    iterador_secundario = iterador_secundario + 1;
+  FIN_MIENTRAS
+
+  // Si se mantuvo como primo, contabilizarlo
+  SI (es_primo == 1)
+    ESCRIBIR "Numero primo detectado en el sistema:";
+    ESCRIBIR iterador_principal;
+    contador_primos = contador_primos + 1;
+    suma_total = suma_total + iterador_principal;
+  FIN_SI
+
+  iterador_principal = iterador_principal + 1;
+FIN_MIENTRAS
+
+// 7. Cálculos estadísticos finales
+SI (contador_primos > 0)
+  promedio = suma_total / contador_primos;
+  ESCRIBIR "Total de numeros primos encontrados:";
+  ESCRIBIR contador_primos;
+  ESCRIBIR "Promedio exacto de los numeros primos:";
+  ESCRIBIR promedio;
+SINO
+  ESCRIBIR "No se hallaron coincidencias en el rango dado.";
+FIN_SI
+
+
+FIN_SI
+
+// 8. Secuencia final
+ENTERO conteo_regresivo;
+conteo_regresivo = 5;
+ESCRIBIR "Iniciando secuencia de finalizacion...";
+
+MIENTRAS (conteo_regresivo > 0)
+ESCRIBIR conteo_regresivo;
+conteo_regresivo = conteo_regresivo - 1;
+FIN_MIENTRAS
+
+ESCRIBIR mensaje_fin;
+FIN

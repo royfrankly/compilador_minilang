@@ -1,0 +1,94 @@
+INICIO
+// ---------------------------------------------------------
+// ARCHIVO DE PRUEBA: ERROR SINTÁCTICO
+// Contiene errores de estructura: falta de paréntesis,
+// falta de punto y coma, y palabras clave faltantes.
+// ---------------------------------------------------------
+
+ENTERO limite_inferior;
+ENTERO limite_superior;
+ENTERO contador_primos;
+ENTERO iterador_principal;
+ENTERO iterador_secundario;
+ENTERO es_primo;
+ENTERO residuo;
+ENTERO cociente;
+REAL promedio;
+REAL suma_total;
+REAL constante_optimizada;
+CADENA mensaje_inicio;
+CADENA mensaje_fin;
+BOOLEANO bandera_estado;
+
+// ERROR SINTÁCTICO 1: Falta el punto y coma final
+mensaje_inicio = "Iniciando el sistema avanzado de calculo"
+
+mensaje_fin = "Procesamiento completado con exito.";
+bandera_estado = VERDADERO;
+contador_primos = 0;
+suma_total = 0.0;
+
+// ERROR SINTÁCTICO 2: Operador sin operando a la derecha
+constante_optimizada = 10.5 * 2.0 + 5.0 - ;
+
+ENTERO calculo_pesado;
+calculo_pesado = 100 / 2 * 3 + 50 - 10;
+
+ESCRIBIR mensaje_inicio;
+ESCRIBIR "Valor optimizado 1 (debe ser 25):";
+ESCRIBIR constante_optimizada;
+
+limite_inferior = 2;
+limite_superior = 50;
+
+// ERROR SINTÁCTICO 3: Falta el paréntesis de cierre
+SI (limite_inferior > limite_superior
+ESCRIBIR "Error: El limite inferior no puede ser mayor al superior.";
+bandera_estado = FALSO;
+SINO
+SI (limite_inferior < 0)
+ESCRIBIR "Error: Los limites deben ser estrictamente positivos.";
+bandera_estado = FALSO;
+FIN_SI
+FIN_SI
+
+SI (bandera_estado == VERDADERO)
+iterador_principal = limite_inferior;
+
+MIENTRAS (iterador_principal < limite_superior)
+  es_primo = 1;
+  iterador_secundario = 2;
+
+  MIENTRAS (iterador_secundario < iterador_principal)
+    
+    cociente = iterador_principal / iterador_secundario;
+    residuo = iterador_principal - (cociente * iterador_secundario);
+
+    SI (residuo == 0)
+      es_primo = 0; 
+    // ERROR SINTÁCTICO 4: Falta el FIN_SI aquí
+    
+    iterador_secundario = iterador_secundario + 1;
+  FIN_MIENTRAS
+
+  SI (es_primo == 1)
+    ESCRIBIR "Numero primo detectado en el sistema:";
+    ESCRIBIR iterador_principal;
+    contador_primos = contador_primos + 1;
+    suma_total = suma_total + iterador_principal;
+  FIN_SI
+
+  iterador_principal = iterador_principal + 1;
+FIN_MIENTRAS
+
+SI (contador_primos > 0)
+  promedio = suma_total / contador_primos;
+  ESCRIBIR "Total de numeros primos encontrados:";
+  ESCRIBIR contador_primos;
+FIN_SI
+
+
+FIN_SI
+
+ESCRIBIR mensaje_fin;
+FIN
