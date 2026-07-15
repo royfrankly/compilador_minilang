@@ -97,9 +97,16 @@ def p_escritura(p):
 
 def p_error(p):
     if p:
-        print(f"Error Sintáctico: Token inesperado '{p.value}' en la línea {p.lineno}")
+        # Construimos un mensaje rico en detalles
+        mensaje = f"Error de sintaxis cerca de la línea {p.lineno}.\n"
+        mensaje += f"Se encontró: '{p.value}' (Token: {p.type}) de forma inesperada.\n"
+        mensaje += "Sugerencia: Verifica si falta un punto y coma (;) en la instrucción anterior,\n"
+        mensaje +=  "o si escribiste mal una palabra reservada (ej. INICIO, FIN, ENTERO)."
+        
+        # Lanzamos el error para que la interfaz (app_window.py) lo atrape
+        raise ErrorSintacticoMiniLang(mensaje)
     else:
-        print("Error Sintáctico: Fin de archivo inesperado")
+        raise ErrorSintacticoMiniLang("❌ Error Fatal: Fin de archivo inesperado.\n   💡 Sugerencia: Revisa que el código termine correctamente (¿Falta un 'FIN' o 'FIN_PROGRAMA'?).")
 
 def obtener_parser():
     """Función esencial requerida por el backend para invocar el parseo del código"""

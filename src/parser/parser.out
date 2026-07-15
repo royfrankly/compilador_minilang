@@ -1,0 +1,1946 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    OP_NO
+
+Grammar
+
+Rule 0     S' -> programa
+Rule 1     programa -> INICIO lista_instrucciones FIN
+Rule 2     lista_instrucciones -> lista_instrucciones instruccion
+Rule 3     lista_instrucciones -> instruccion
+Rule 4     instruccion -> declaracion
+Rule 5     instruccion -> asignacion
+Rule 6     instruccion -> condicional
+Rule 7     instruccion -> ciclo
+Rule 8     instruccion -> lectura
+Rule 9     instruccion -> escritura
+Rule 10    declaracion -> tipo_dato ID PUNTO_COMA
+Rule 11    tipo_dato -> ENTERO
+Rule 12    tipo_dato -> REAL
+Rule 13    tipo_dato -> CADENA
+Rule 14    tipo_dato -> BOOLEANO
+Rule 15    asignacion -> ID OP_ASIG expresion PUNTO_COMA
+Rule 16    expresion -> expresion OP_SUMA expresion
+Rule 17    expresion -> expresion OP_RESTA expresion
+Rule 18    expresion -> expresion OP_MULT expresion
+Rule 19    expresion -> expresion OP_DIV expresion
+Rule 20    expresion -> expresion OP_MAYOR expresion
+Rule 21    expresion -> expresion OP_MENOR expresion
+Rule 22    expresion -> expresion OP_IGUALDAD expresion
+Rule 23    expresion -> expresion OP_DIFERENTE expresion
+Rule 24    expresion -> expresion OP_Y expresion
+Rule 25    expresion -> expresion OP_O expresion
+Rule 26    expresion -> PAR_IZQ expresion PAR_DER
+Rule 27    expresion -> NUM_ENTERO
+Rule 28    expresion -> NUM_REAL
+Rule 29    expresion -> CADENA_LITERAL
+Rule 30    expresion -> VERDADERO
+Rule 31    expresion -> FALSO
+Rule 32    expresion -> ID
+Rule 33    condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI
+Rule 34    condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI
+Rule 35    ciclo -> MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS
+Rule 36    lectura -> LEER ID PUNTO_COMA
+Rule 37    escritura -> ESCRIBIR expresion PUNTO_COMA
+
+Terminals, with rules where they appear
+
+BOOLEANO             : 14
+CADENA               : 13
+CADENA_LITERAL       : 29
+ENTERO               : 11
+ESCRIBIR             : 37
+FALSO                : 31
+FIN                  : 1
+FIN_MIENTRAS         : 35
+FIN_SI               : 33 34
+ID                   : 10 15 32 36
+INICIO               : 1
+LEER                 : 36
+MIENTRAS             : 35
+NUM_ENTERO           : 27
+NUM_REAL             : 28
+OP_ASIG              : 15
+OP_DIFERENTE         : 23
+OP_DIV               : 19
+OP_IGUALDAD          : 22
+OP_MAYOR             : 20
+OP_MENOR             : 21
+OP_MULT              : 18
+OP_NO                : 
+OP_O                 : 25
+OP_RESTA             : 17
+OP_SUMA              : 16
+OP_Y                 : 24
+PAR_DER              : 26 33 34 35
+PAR_IZQ              : 26 33 34 35
+PUNTO_COMA           : 10 15 36 37
+REAL                 : 12
+SI                   : 33 34
+SINO                 : 34
+VERDADERO            : 30
+error                : 
+
+Nonterminals, with rules where they appear
+
+asignacion           : 5
+ciclo                : 7
+condicional          : 6
+declaracion          : 4
+escritura            : 9
+expresion            : 15 16 16 17 17 18 18 19 19 20 20 21 21 22 22 23 23 24 24 25 25 26 33 34 35 37
+instruccion          : 2 3
+lectura              : 8
+lista_instrucciones  : 1 2 33 34 34 35
+programa             : 0
+tipo_dato            : 10
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . programa
+    (1) programa -> . INICIO lista_instrucciones FIN
+
+    INICIO          shift and go to state 2
+
+    programa                       shift and go to state 1
+
+state 1
+
+    (0) S' -> programa .
+
+
+
+state 2
+
+    (1) programa -> INICIO . lista_instrucciones FIN
+    (2) lista_instrucciones -> . lista_instrucciones instruccion
+    (3) lista_instrucciones -> . instruccion
+    (4) instruccion -> . declaracion
+    (5) instruccion -> . asignacion
+    (6) instruccion -> . condicional
+    (7) instruccion -> . ciclo
+    (8) instruccion -> . lectura
+    (9) instruccion -> . escritura
+    (10) declaracion -> . tipo_dato ID PUNTO_COMA
+    (15) asignacion -> . ID OP_ASIG expresion PUNTO_COMA
+    (33) condicional -> . SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI
+    (34) condicional -> . SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI
+    (35) ciclo -> . MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS
+    (36) lectura -> . LEER ID PUNTO_COMA
+    (37) escritura -> . ESCRIBIR expresion PUNTO_COMA
+    (11) tipo_dato -> . ENTERO
+    (12) tipo_dato -> . REAL
+    (13) tipo_dato -> . CADENA
+    (14) tipo_dato -> . BOOLEANO
+
+    ID              shift and go to state 12
+    SI              shift and go to state 13
+    MIENTRAS        shift and go to state 14
+    LEER            shift and go to state 15
+    ESCRIBIR        shift and go to state 16
+    ENTERO          shift and go to state 17
+    REAL            shift and go to state 18
+    CADENA          shift and go to state 19
+    BOOLEANO        shift and go to state 20
+
+    lista_instrucciones            shift and go to state 3
+    instruccion                    shift and go to state 4
+    declaracion                    shift and go to state 5
+    asignacion                     shift and go to state 6
+    condicional                    shift and go to state 7
+    ciclo                          shift and go to state 8
+    lectura                        shift and go to state 9
+    escritura                      shift and go to state 10
+    tipo_dato                      shift and go to state 11
+
+state 3
+
+    (1) programa -> INICIO lista_instrucciones . FIN
+    (2) lista_instrucciones -> lista_instrucciones . instruccion
+    (4) instruccion -> . declaracion
+    (5) instruccion -> . asignacion
+    (6) instruccion -> . condicional
+    (7) instruccion -> . ciclo
+    (8) instruccion -> . lectura
+    (9) instruccion -> . escritura
+    (10) declaracion -> . tipo_dato ID PUNTO_COMA
+    (15) asignacion -> . ID OP_ASIG expresion PUNTO_COMA
+    (33) condicional -> . SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI
+    (34) condicional -> . SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI
+    (35) ciclo -> . MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS
+    (36) lectura -> . LEER ID PUNTO_COMA
+    (37) escritura -> . ESCRIBIR expresion PUNTO_COMA
+    (11) tipo_dato -> . ENTERO
+    (12) tipo_dato -> . REAL
+    (13) tipo_dato -> . CADENA
+    (14) tipo_dato -> . BOOLEANO
+
+    FIN             shift and go to state 21
+    ID              shift and go to state 12
+    SI              shift and go to state 13
+    MIENTRAS        shift and go to state 14
+    LEER            shift and go to state 15
+    ESCRIBIR        shift and go to state 16
+    ENTERO          shift and go to state 17
+    REAL            shift and go to state 18
+    CADENA          shift and go to state 19
+    BOOLEANO        shift and go to state 20
+
+    instruccion                    shift and go to state 22
+    declaracion                    shift and go to state 5
+    asignacion                     shift and go to state 6
+    condicional                    shift and go to state 7
+    ciclo                          shift and go to state 8
+    lectura                        shift and go to state 9
+    escritura                      shift and go to state 10
+    tipo_dato                      shift and go to state 11
+
+state 4
+
+    (3) lista_instrucciones -> instruccion .
+
+    FIN             reduce using rule 3 (lista_instrucciones -> instruccion .)
+    ID              reduce using rule 3 (lista_instrucciones -> instruccion .)
+    SI              reduce using rule 3 (lista_instrucciones -> instruccion .)
+    MIENTRAS        reduce using rule 3 (lista_instrucciones -> instruccion .)
+    LEER            reduce using rule 3 (lista_instrucciones -> instruccion .)
+    ESCRIBIR        reduce using rule 3 (lista_instrucciones -> instruccion .)
+    ENTERO          reduce using rule 3 (lista_instrucciones -> instruccion .)
+    REAL            reduce using rule 3 (lista_instrucciones -> instruccion .)
+    CADENA          reduce using rule 3 (lista_instrucciones -> instruccion .)
+    BOOLEANO        reduce using rule 3 (lista_instrucciones -> instruccion .)
+    FIN_SI          reduce using rule 3 (lista_instrucciones -> instruccion .)
+    SINO            reduce using rule 3 (lista_instrucciones -> instruccion .)
+    FIN_MIENTRAS    reduce using rule 3 (lista_instrucciones -> instruccion .)
+
+
+state 5
+
+    (4) instruccion -> declaracion .
+
+    FIN             reduce using rule 4 (instruccion -> declaracion .)
+    ID              reduce using rule 4 (instruccion -> declaracion .)
+    SI              reduce using rule 4 (instruccion -> declaracion .)
+    MIENTRAS        reduce using rule 4 (instruccion -> declaracion .)
+    LEER            reduce using rule 4 (instruccion -> declaracion .)
+    ESCRIBIR        reduce using rule 4 (instruccion -> declaracion .)
+    ENTERO          reduce using rule 4 (instruccion -> declaracion .)
+    REAL            reduce using rule 4 (instruccion -> declaracion .)
+    CADENA          reduce using rule 4 (instruccion -> declaracion .)
+    BOOLEANO        reduce using rule 4 (instruccion -> declaracion .)
+    FIN_SI          reduce using rule 4 (instruccion -> declaracion .)
+    SINO            reduce using rule 4 (instruccion -> declaracion .)
+    FIN_MIENTRAS    reduce using rule 4 (instruccion -> declaracion .)
+
+
+state 6
+
+    (5) instruccion -> asignacion .
+
+    FIN             reduce using rule 5 (instruccion -> asignacion .)
+    ID              reduce using rule 5 (instruccion -> asignacion .)
+    SI              reduce using rule 5 (instruccion -> asignacion .)
+    MIENTRAS        reduce using rule 5 (instruccion -> asignacion .)
+    LEER            reduce using rule 5 (instruccion -> asignacion .)
+    ESCRIBIR        reduce using rule 5 (instruccion -> asignacion .)
+    ENTERO          reduce using rule 5 (instruccion -> asignacion .)
+    REAL            reduce using rule 5 (instruccion -> asignacion .)
+    CADENA          reduce using rule 5 (instruccion -> asignacion .)
+    BOOLEANO        reduce using rule 5 (instruccion -> asignacion .)
+    FIN_SI          reduce using rule 5 (instruccion -> asignacion .)
+    SINO            reduce using rule 5 (instruccion -> asignacion .)
+    FIN_MIENTRAS    reduce using rule 5 (instruccion -> asignacion .)
+
+
+state 7
+
+    (6) instruccion -> condicional .
+
+    FIN             reduce using rule 6 (instruccion -> condicional .)
+    ID              reduce using rule 6 (instruccion -> condicional .)
+    SI              reduce using rule 6 (instruccion -> condicional .)
+    MIENTRAS        reduce using rule 6 (instruccion -> condicional .)
+    LEER            reduce using rule 6 (instruccion -> condicional .)
+    ESCRIBIR        reduce using rule 6 (instruccion -> condicional .)
+    ENTERO          reduce using rule 6 (instruccion -> condicional .)
+    REAL            reduce using rule 6 (instruccion -> condicional .)
+    CADENA          reduce using rule 6 (instruccion -> condicional .)
+    BOOLEANO        reduce using rule 6 (instruccion -> condicional .)
+    FIN_SI          reduce using rule 6 (instruccion -> condicional .)
+    SINO            reduce using rule 6 (instruccion -> condicional .)
+    FIN_MIENTRAS    reduce using rule 6 (instruccion -> condicional .)
+
+
+state 8
+
+    (7) instruccion -> ciclo .
+
+    FIN             reduce using rule 7 (instruccion -> ciclo .)
+    ID              reduce using rule 7 (instruccion -> ciclo .)
+    SI              reduce using rule 7 (instruccion -> ciclo .)
+    MIENTRAS        reduce using rule 7 (instruccion -> ciclo .)
+    LEER            reduce using rule 7 (instruccion -> ciclo .)
+    ESCRIBIR        reduce using rule 7 (instruccion -> ciclo .)
+    ENTERO          reduce using rule 7 (instruccion -> ciclo .)
+    REAL            reduce using rule 7 (instruccion -> ciclo .)
+    CADENA          reduce using rule 7 (instruccion -> ciclo .)
+    BOOLEANO        reduce using rule 7 (instruccion -> ciclo .)
+    FIN_SI          reduce using rule 7 (instruccion -> ciclo .)
+    SINO            reduce using rule 7 (instruccion -> ciclo .)
+    FIN_MIENTRAS    reduce using rule 7 (instruccion -> ciclo .)
+
+
+state 9
+
+    (8) instruccion -> lectura .
+
+    FIN             reduce using rule 8 (instruccion -> lectura .)
+    ID              reduce using rule 8 (instruccion -> lectura .)
+    SI              reduce using rule 8 (instruccion -> lectura .)
+    MIENTRAS        reduce using rule 8 (instruccion -> lectura .)
+    LEER            reduce using rule 8 (instruccion -> lectura .)
+    ESCRIBIR        reduce using rule 8 (instruccion -> lectura .)
+    ENTERO          reduce using rule 8 (instruccion -> lectura .)
+    REAL            reduce using rule 8 (instruccion -> lectura .)
+    CADENA          reduce using rule 8 (instruccion -> lectura .)
+    BOOLEANO        reduce using rule 8 (instruccion -> lectura .)
+    FIN_SI          reduce using rule 8 (instruccion -> lectura .)
+    SINO            reduce using rule 8 (instruccion -> lectura .)
+    FIN_MIENTRAS    reduce using rule 8 (instruccion -> lectura .)
+
+
+state 10
+
+    (9) instruccion -> escritura .
+
+    FIN             reduce using rule 9 (instruccion -> escritura .)
+    ID              reduce using rule 9 (instruccion -> escritura .)
+    SI              reduce using rule 9 (instruccion -> escritura .)
+    MIENTRAS        reduce using rule 9 (instruccion -> escritura .)
+    LEER            reduce using rule 9 (instruccion -> escritura .)
+    ESCRIBIR        reduce using rule 9 (instruccion -> escritura .)
+    ENTERO          reduce using rule 9 (instruccion -> escritura .)
+    REAL            reduce using rule 9 (instruccion -> escritura .)
+    CADENA          reduce using rule 9 (instruccion -> escritura .)
+    BOOLEANO        reduce using rule 9 (instruccion -> escritura .)
+    FIN_SI          reduce using rule 9 (instruccion -> escritura .)
+    SINO            reduce using rule 9 (instruccion -> escritura .)
+    FIN_MIENTRAS    reduce using rule 9 (instruccion -> escritura .)
+
+
+state 11
+
+    (10) declaracion -> tipo_dato . ID PUNTO_COMA
+
+    ID              shift and go to state 23
+
+
+state 12
+
+    (15) asignacion -> ID . OP_ASIG expresion PUNTO_COMA
+
+    OP_ASIG         shift and go to state 24
+
+
+state 13
+
+    (33) condicional -> SI . PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI
+    (34) condicional -> SI . PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI
+
+    PAR_IZQ         shift and go to state 25
+
+
+state 14
+
+    (35) ciclo -> MIENTRAS . PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS
+
+    PAR_IZQ         shift and go to state 26
+
+
+state 15
+
+    (36) lectura -> LEER . ID PUNTO_COMA
+
+    ID              shift and go to state 27
+
+
+state 16
+
+    (37) escritura -> ESCRIBIR . expresion PUNTO_COMA
+    (16) expresion -> . expresion OP_SUMA expresion
+    (17) expresion -> . expresion OP_RESTA expresion
+    (18) expresion -> . expresion OP_MULT expresion
+    (19) expresion -> . expresion OP_DIV expresion
+    (20) expresion -> . expresion OP_MAYOR expresion
+    (21) expresion -> . expresion OP_MENOR expresion
+    (22) expresion -> . expresion OP_IGUALDAD expresion
+    (23) expresion -> . expresion OP_DIFERENTE expresion
+    (24) expresion -> . expresion OP_Y expresion
+    (25) expresion -> . expresion OP_O expresion
+    (26) expresion -> . PAR_IZQ expresion PAR_DER
+    (27) expresion -> . NUM_ENTERO
+    (28) expresion -> . NUM_REAL
+    (29) expresion -> . CADENA_LITERAL
+    (30) expresion -> . VERDADERO
+    (31) expresion -> . FALSO
+    (32) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 29
+    NUM_ENTERO      shift and go to state 30
+    NUM_REAL        shift and go to state 31
+    CADENA_LITERAL  shift and go to state 32
+    VERDADERO       shift and go to state 33
+    FALSO           shift and go to state 34
+    ID              shift and go to state 35
+
+    expresion                      shift and go to state 28
+
+state 17
+
+    (11) tipo_dato -> ENTERO .
+
+    ID              reduce using rule 11 (tipo_dato -> ENTERO .)
+
+
+state 18
+
+    (12) tipo_dato -> REAL .
+
+    ID              reduce using rule 12 (tipo_dato -> REAL .)
+
+
+state 19
+
+    (13) tipo_dato -> CADENA .
+
+    ID              reduce using rule 13 (tipo_dato -> CADENA .)
+
+
+state 20
+
+    (14) tipo_dato -> BOOLEANO .
+
+    ID              reduce using rule 14 (tipo_dato -> BOOLEANO .)
+
+
+state 21
+
+    (1) programa -> INICIO lista_instrucciones FIN .
+
+    $end            reduce using rule 1 (programa -> INICIO lista_instrucciones FIN .)
+
+
+state 22
+
+    (2) lista_instrucciones -> lista_instrucciones instruccion .
+
+    FIN             reduce using rule 2 (lista_instrucciones -> lista_instrucciones instruccion .)
+    ID              reduce using rule 2 (lista_instrucciones -> lista_instrucciones instruccion .)
+    SI              reduce using rule 2 (lista_instrucciones -> lista_instrucciones instruccion .)
+    MIENTRAS        reduce using rule 2 (lista_instrucciones -> lista_instrucciones instruccion .)
+    LEER            reduce using rule 2 (lista_instrucciones -> lista_instrucciones instruccion .)
+    ESCRIBIR        reduce using rule 2 (lista_instrucciones -> lista_instrucciones instruccion .)
+    ENTERO          reduce using rule 2 (lista_instrucciones -> lista_instrucciones instruccion .)
+    REAL            reduce using rule 2 (lista_instrucciones -> lista_instrucciones instruccion .)
+    CADENA          reduce using rule 2 (lista_instrucciones -> lista_instrucciones instruccion .)
+    BOOLEANO        reduce using rule 2 (lista_instrucciones -> lista_instrucciones instruccion .)
+    FIN_SI          reduce using rule 2 (lista_instrucciones -> lista_instrucciones instruccion .)
+    SINO            reduce using rule 2 (lista_instrucciones -> lista_instrucciones instruccion .)
+    FIN_MIENTRAS    reduce using rule 2 (lista_instrucciones -> lista_instrucciones instruccion .)
+
+
+state 23
+
+    (10) declaracion -> tipo_dato ID . PUNTO_COMA
+
+    PUNTO_COMA      shift and go to state 36
+
+
+state 24
+
+    (15) asignacion -> ID OP_ASIG . expresion PUNTO_COMA
+    (16) expresion -> . expresion OP_SUMA expresion
+    (17) expresion -> . expresion OP_RESTA expresion
+    (18) expresion -> . expresion OP_MULT expresion
+    (19) expresion -> . expresion OP_DIV expresion
+    (20) expresion -> . expresion OP_MAYOR expresion
+    (21) expresion -> . expresion OP_MENOR expresion
+    (22) expresion -> . expresion OP_IGUALDAD expresion
+    (23) expresion -> . expresion OP_DIFERENTE expresion
+    (24) expresion -> . expresion OP_Y expresion
+    (25) expresion -> . expresion OP_O expresion
+    (26) expresion -> . PAR_IZQ expresion PAR_DER
+    (27) expresion -> . NUM_ENTERO
+    (28) expresion -> . NUM_REAL
+    (29) expresion -> . CADENA_LITERAL
+    (30) expresion -> . VERDADERO
+    (31) expresion -> . FALSO
+    (32) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 29
+    NUM_ENTERO      shift and go to state 30
+    NUM_REAL        shift and go to state 31
+    CADENA_LITERAL  shift and go to state 32
+    VERDADERO       shift and go to state 33
+    FALSO           shift and go to state 34
+    ID              shift and go to state 35
+
+    expresion                      shift and go to state 37
+
+state 25
+
+    (33) condicional -> SI PAR_IZQ . expresion PAR_DER lista_instrucciones FIN_SI
+    (34) condicional -> SI PAR_IZQ . expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI
+    (16) expresion -> . expresion OP_SUMA expresion
+    (17) expresion -> . expresion OP_RESTA expresion
+    (18) expresion -> . expresion OP_MULT expresion
+    (19) expresion -> . expresion OP_DIV expresion
+    (20) expresion -> . expresion OP_MAYOR expresion
+    (21) expresion -> . expresion OP_MENOR expresion
+    (22) expresion -> . expresion OP_IGUALDAD expresion
+    (23) expresion -> . expresion OP_DIFERENTE expresion
+    (24) expresion -> . expresion OP_Y expresion
+    (25) expresion -> . expresion OP_O expresion
+    (26) expresion -> . PAR_IZQ expresion PAR_DER
+    (27) expresion -> . NUM_ENTERO
+    (28) expresion -> . NUM_REAL
+    (29) expresion -> . CADENA_LITERAL
+    (30) expresion -> . VERDADERO
+    (31) expresion -> . FALSO
+    (32) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 29
+    NUM_ENTERO      shift and go to state 30
+    NUM_REAL        shift and go to state 31
+    CADENA_LITERAL  shift and go to state 32
+    VERDADERO       shift and go to state 33
+    FALSO           shift and go to state 34
+    ID              shift and go to state 35
+
+    expresion                      shift and go to state 38
+
+state 26
+
+    (35) ciclo -> MIENTRAS PAR_IZQ . expresion PAR_DER lista_instrucciones FIN_MIENTRAS
+    (16) expresion -> . expresion OP_SUMA expresion
+    (17) expresion -> . expresion OP_RESTA expresion
+    (18) expresion -> . expresion OP_MULT expresion
+    (19) expresion -> . expresion OP_DIV expresion
+    (20) expresion -> . expresion OP_MAYOR expresion
+    (21) expresion -> . expresion OP_MENOR expresion
+    (22) expresion -> . expresion OP_IGUALDAD expresion
+    (23) expresion -> . expresion OP_DIFERENTE expresion
+    (24) expresion -> . expresion OP_Y expresion
+    (25) expresion -> . expresion OP_O expresion
+    (26) expresion -> . PAR_IZQ expresion PAR_DER
+    (27) expresion -> . NUM_ENTERO
+    (28) expresion -> . NUM_REAL
+    (29) expresion -> . CADENA_LITERAL
+    (30) expresion -> . VERDADERO
+    (31) expresion -> . FALSO
+    (32) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 29
+    NUM_ENTERO      shift and go to state 30
+    NUM_REAL        shift and go to state 31
+    CADENA_LITERAL  shift and go to state 32
+    VERDADERO       shift and go to state 33
+    FALSO           shift and go to state 34
+    ID              shift and go to state 35
+
+    expresion                      shift and go to state 39
+
+state 27
+
+    (36) lectura -> LEER ID . PUNTO_COMA
+
+    PUNTO_COMA      shift and go to state 40
+
+
+state 28
+
+    (37) escritura -> ESCRIBIR expresion . PUNTO_COMA
+    (16) expresion -> expresion . OP_SUMA expresion
+    (17) expresion -> expresion . OP_RESTA expresion
+    (18) expresion -> expresion . OP_MULT expresion
+    (19) expresion -> expresion . OP_DIV expresion
+    (20) expresion -> expresion . OP_MAYOR expresion
+    (21) expresion -> expresion . OP_MENOR expresion
+    (22) expresion -> expresion . OP_IGUALDAD expresion
+    (23) expresion -> expresion . OP_DIFERENTE expresion
+    (24) expresion -> expresion . OP_Y expresion
+    (25) expresion -> expresion . OP_O expresion
+
+    PUNTO_COMA      shift and go to state 41
+    OP_SUMA         shift and go to state 42
+    OP_RESTA        shift and go to state 43
+    OP_MULT         shift and go to state 44
+    OP_DIV          shift and go to state 45
+    OP_MAYOR        shift and go to state 46
+    OP_MENOR        shift and go to state 47
+    OP_IGUALDAD     shift and go to state 48
+    OP_DIFERENTE    shift and go to state 49
+    OP_Y            shift and go to state 50
+    OP_O            shift and go to state 51
+
+
+state 29
+
+    (26) expresion -> PAR_IZQ . expresion PAR_DER
+    (16) expresion -> . expresion OP_SUMA expresion
+    (17) expresion -> . expresion OP_RESTA expresion
+    (18) expresion -> . expresion OP_MULT expresion
+    (19) expresion -> . expresion OP_DIV expresion
+    (20) expresion -> . expresion OP_MAYOR expresion
+    (21) expresion -> . expresion OP_MENOR expresion
+    (22) expresion -> . expresion OP_IGUALDAD expresion
+    (23) expresion -> . expresion OP_DIFERENTE expresion
+    (24) expresion -> . expresion OP_Y expresion
+    (25) expresion -> . expresion OP_O expresion
+    (26) expresion -> . PAR_IZQ expresion PAR_DER
+    (27) expresion -> . NUM_ENTERO
+    (28) expresion -> . NUM_REAL
+    (29) expresion -> . CADENA_LITERAL
+    (30) expresion -> . VERDADERO
+    (31) expresion -> . FALSO
+    (32) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 29
+    NUM_ENTERO      shift and go to state 30
+    NUM_REAL        shift and go to state 31
+    CADENA_LITERAL  shift and go to state 32
+    VERDADERO       shift and go to state 33
+    FALSO           shift and go to state 34
+    ID              shift and go to state 35
+
+    expresion                      shift and go to state 52
+
+state 30
+
+    (27) expresion -> NUM_ENTERO .
+
+    PUNTO_COMA      reduce using rule 27 (expresion -> NUM_ENTERO .)
+    OP_SUMA         reduce using rule 27 (expresion -> NUM_ENTERO .)
+    OP_RESTA        reduce using rule 27 (expresion -> NUM_ENTERO .)
+    OP_MULT         reduce using rule 27 (expresion -> NUM_ENTERO .)
+    OP_DIV          reduce using rule 27 (expresion -> NUM_ENTERO .)
+    OP_MAYOR        reduce using rule 27 (expresion -> NUM_ENTERO .)
+    OP_MENOR        reduce using rule 27 (expresion -> NUM_ENTERO .)
+    OP_IGUALDAD     reduce using rule 27 (expresion -> NUM_ENTERO .)
+    OP_DIFERENTE    reduce using rule 27 (expresion -> NUM_ENTERO .)
+    OP_Y            reduce using rule 27 (expresion -> NUM_ENTERO .)
+    OP_O            reduce using rule 27 (expresion -> NUM_ENTERO .)
+    PAR_DER         reduce using rule 27 (expresion -> NUM_ENTERO .)
+
+
+state 31
+
+    (28) expresion -> NUM_REAL .
+
+    PUNTO_COMA      reduce using rule 28 (expresion -> NUM_REAL .)
+    OP_SUMA         reduce using rule 28 (expresion -> NUM_REAL .)
+    OP_RESTA        reduce using rule 28 (expresion -> NUM_REAL .)
+    OP_MULT         reduce using rule 28 (expresion -> NUM_REAL .)
+    OP_DIV          reduce using rule 28 (expresion -> NUM_REAL .)
+    OP_MAYOR        reduce using rule 28 (expresion -> NUM_REAL .)
+    OP_MENOR        reduce using rule 28 (expresion -> NUM_REAL .)
+    OP_IGUALDAD     reduce using rule 28 (expresion -> NUM_REAL .)
+    OP_DIFERENTE    reduce using rule 28 (expresion -> NUM_REAL .)
+    OP_Y            reduce using rule 28 (expresion -> NUM_REAL .)
+    OP_O            reduce using rule 28 (expresion -> NUM_REAL .)
+    PAR_DER         reduce using rule 28 (expresion -> NUM_REAL .)
+
+
+state 32
+
+    (29) expresion -> CADENA_LITERAL .
+
+    PUNTO_COMA      reduce using rule 29 (expresion -> CADENA_LITERAL .)
+    OP_SUMA         reduce using rule 29 (expresion -> CADENA_LITERAL .)
+    OP_RESTA        reduce using rule 29 (expresion -> CADENA_LITERAL .)
+    OP_MULT         reduce using rule 29 (expresion -> CADENA_LITERAL .)
+    OP_DIV          reduce using rule 29 (expresion -> CADENA_LITERAL .)
+    OP_MAYOR        reduce using rule 29 (expresion -> CADENA_LITERAL .)
+    OP_MENOR        reduce using rule 29 (expresion -> CADENA_LITERAL .)
+    OP_IGUALDAD     reduce using rule 29 (expresion -> CADENA_LITERAL .)
+    OP_DIFERENTE    reduce using rule 29 (expresion -> CADENA_LITERAL .)
+    OP_Y            reduce using rule 29 (expresion -> CADENA_LITERAL .)
+    OP_O            reduce using rule 29 (expresion -> CADENA_LITERAL .)
+    PAR_DER         reduce using rule 29 (expresion -> CADENA_LITERAL .)
+
+
+state 33
+
+    (30) expresion -> VERDADERO .
+
+    PUNTO_COMA      reduce using rule 30 (expresion -> VERDADERO .)
+    OP_SUMA         reduce using rule 30 (expresion -> VERDADERO .)
+    OP_RESTA        reduce using rule 30 (expresion -> VERDADERO .)
+    OP_MULT         reduce using rule 30 (expresion -> VERDADERO .)
+    OP_DIV          reduce using rule 30 (expresion -> VERDADERO .)
+    OP_MAYOR        reduce using rule 30 (expresion -> VERDADERO .)
+    OP_MENOR        reduce using rule 30 (expresion -> VERDADERO .)
+    OP_IGUALDAD     reduce using rule 30 (expresion -> VERDADERO .)
+    OP_DIFERENTE    reduce using rule 30 (expresion -> VERDADERO .)
+    OP_Y            reduce using rule 30 (expresion -> VERDADERO .)
+    OP_O            reduce using rule 30 (expresion -> VERDADERO .)
+    PAR_DER         reduce using rule 30 (expresion -> VERDADERO .)
+
+
+state 34
+
+    (31) expresion -> FALSO .
+
+    PUNTO_COMA      reduce using rule 31 (expresion -> FALSO .)
+    OP_SUMA         reduce using rule 31 (expresion -> FALSO .)
+    OP_RESTA        reduce using rule 31 (expresion -> FALSO .)
+    OP_MULT         reduce using rule 31 (expresion -> FALSO .)
+    OP_DIV          reduce using rule 31 (expresion -> FALSO .)
+    OP_MAYOR        reduce using rule 31 (expresion -> FALSO .)
+    OP_MENOR        reduce using rule 31 (expresion -> FALSO .)
+    OP_IGUALDAD     reduce using rule 31 (expresion -> FALSO .)
+    OP_DIFERENTE    reduce using rule 31 (expresion -> FALSO .)
+    OP_Y            reduce using rule 31 (expresion -> FALSO .)
+    OP_O            reduce using rule 31 (expresion -> FALSO .)
+    PAR_DER         reduce using rule 31 (expresion -> FALSO .)
+
+
+state 35
+
+    (32) expresion -> ID .
+
+    PUNTO_COMA      reduce using rule 32 (expresion -> ID .)
+    OP_SUMA         reduce using rule 32 (expresion -> ID .)
+    OP_RESTA        reduce using rule 32 (expresion -> ID .)
+    OP_MULT         reduce using rule 32 (expresion -> ID .)
+    OP_DIV          reduce using rule 32 (expresion -> ID .)
+    OP_MAYOR        reduce using rule 32 (expresion -> ID .)
+    OP_MENOR        reduce using rule 32 (expresion -> ID .)
+    OP_IGUALDAD     reduce using rule 32 (expresion -> ID .)
+    OP_DIFERENTE    reduce using rule 32 (expresion -> ID .)
+    OP_Y            reduce using rule 32 (expresion -> ID .)
+    OP_O            reduce using rule 32 (expresion -> ID .)
+    PAR_DER         reduce using rule 32 (expresion -> ID .)
+
+
+state 36
+
+    (10) declaracion -> tipo_dato ID PUNTO_COMA .
+
+    FIN             reduce using rule 10 (declaracion -> tipo_dato ID PUNTO_COMA .)
+    ID              reduce using rule 10 (declaracion -> tipo_dato ID PUNTO_COMA .)
+    SI              reduce using rule 10 (declaracion -> tipo_dato ID PUNTO_COMA .)
+    MIENTRAS        reduce using rule 10 (declaracion -> tipo_dato ID PUNTO_COMA .)
+    LEER            reduce using rule 10 (declaracion -> tipo_dato ID PUNTO_COMA .)
+    ESCRIBIR        reduce using rule 10 (declaracion -> tipo_dato ID PUNTO_COMA .)
+    ENTERO          reduce using rule 10 (declaracion -> tipo_dato ID PUNTO_COMA .)
+    REAL            reduce using rule 10 (declaracion -> tipo_dato ID PUNTO_COMA .)
+    CADENA          reduce using rule 10 (declaracion -> tipo_dato ID PUNTO_COMA .)
+    BOOLEANO        reduce using rule 10 (declaracion -> tipo_dato ID PUNTO_COMA .)
+    FIN_SI          reduce using rule 10 (declaracion -> tipo_dato ID PUNTO_COMA .)
+    SINO            reduce using rule 10 (declaracion -> tipo_dato ID PUNTO_COMA .)
+    FIN_MIENTRAS    reduce using rule 10 (declaracion -> tipo_dato ID PUNTO_COMA .)
+
+
+state 37
+
+    (15) asignacion -> ID OP_ASIG expresion . PUNTO_COMA
+    (16) expresion -> expresion . OP_SUMA expresion
+    (17) expresion -> expresion . OP_RESTA expresion
+    (18) expresion -> expresion . OP_MULT expresion
+    (19) expresion -> expresion . OP_DIV expresion
+    (20) expresion -> expresion . OP_MAYOR expresion
+    (21) expresion -> expresion . OP_MENOR expresion
+    (22) expresion -> expresion . OP_IGUALDAD expresion
+    (23) expresion -> expresion . OP_DIFERENTE expresion
+    (24) expresion -> expresion . OP_Y expresion
+    (25) expresion -> expresion . OP_O expresion
+
+    PUNTO_COMA      shift and go to state 53
+    OP_SUMA         shift and go to state 42
+    OP_RESTA        shift and go to state 43
+    OP_MULT         shift and go to state 44
+    OP_DIV          shift and go to state 45
+    OP_MAYOR        shift and go to state 46
+    OP_MENOR        shift and go to state 47
+    OP_IGUALDAD     shift and go to state 48
+    OP_DIFERENTE    shift and go to state 49
+    OP_Y            shift and go to state 50
+    OP_O            shift and go to state 51
+
+
+state 38
+
+    (33) condicional -> SI PAR_IZQ expresion . PAR_DER lista_instrucciones FIN_SI
+    (34) condicional -> SI PAR_IZQ expresion . PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI
+    (16) expresion -> expresion . OP_SUMA expresion
+    (17) expresion -> expresion . OP_RESTA expresion
+    (18) expresion -> expresion . OP_MULT expresion
+    (19) expresion -> expresion . OP_DIV expresion
+    (20) expresion -> expresion . OP_MAYOR expresion
+    (21) expresion -> expresion . OP_MENOR expresion
+    (22) expresion -> expresion . OP_IGUALDAD expresion
+    (23) expresion -> expresion . OP_DIFERENTE expresion
+    (24) expresion -> expresion . OP_Y expresion
+    (25) expresion -> expresion . OP_O expresion
+
+    PAR_DER         shift and go to state 54
+    OP_SUMA         shift and go to state 42
+    OP_RESTA        shift and go to state 43
+    OP_MULT         shift and go to state 44
+    OP_DIV          shift and go to state 45
+    OP_MAYOR        shift and go to state 46
+    OP_MENOR        shift and go to state 47
+    OP_IGUALDAD     shift and go to state 48
+    OP_DIFERENTE    shift and go to state 49
+    OP_Y            shift and go to state 50
+    OP_O            shift and go to state 51
+
+
+state 39
+
+    (35) ciclo -> MIENTRAS PAR_IZQ expresion . PAR_DER lista_instrucciones FIN_MIENTRAS
+    (16) expresion -> expresion . OP_SUMA expresion
+    (17) expresion -> expresion . OP_RESTA expresion
+    (18) expresion -> expresion . OP_MULT expresion
+    (19) expresion -> expresion . OP_DIV expresion
+    (20) expresion -> expresion . OP_MAYOR expresion
+    (21) expresion -> expresion . OP_MENOR expresion
+    (22) expresion -> expresion . OP_IGUALDAD expresion
+    (23) expresion -> expresion . OP_DIFERENTE expresion
+    (24) expresion -> expresion . OP_Y expresion
+    (25) expresion -> expresion . OP_O expresion
+
+    PAR_DER         shift and go to state 55
+    OP_SUMA         shift and go to state 42
+    OP_RESTA        shift and go to state 43
+    OP_MULT         shift and go to state 44
+    OP_DIV          shift and go to state 45
+    OP_MAYOR        shift and go to state 46
+    OP_MENOR        shift and go to state 47
+    OP_IGUALDAD     shift and go to state 48
+    OP_DIFERENTE    shift and go to state 49
+    OP_Y            shift and go to state 50
+    OP_O            shift and go to state 51
+
+
+state 40
+
+    (36) lectura -> LEER ID PUNTO_COMA .
+
+    FIN             reduce using rule 36 (lectura -> LEER ID PUNTO_COMA .)
+    ID              reduce using rule 36 (lectura -> LEER ID PUNTO_COMA .)
+    SI              reduce using rule 36 (lectura -> LEER ID PUNTO_COMA .)
+    MIENTRAS        reduce using rule 36 (lectura -> LEER ID PUNTO_COMA .)
+    LEER            reduce using rule 36 (lectura -> LEER ID PUNTO_COMA .)
+    ESCRIBIR        reduce using rule 36 (lectura -> LEER ID PUNTO_COMA .)
+    ENTERO          reduce using rule 36 (lectura -> LEER ID PUNTO_COMA .)
+    REAL            reduce using rule 36 (lectura -> LEER ID PUNTO_COMA .)
+    CADENA          reduce using rule 36 (lectura -> LEER ID PUNTO_COMA .)
+    BOOLEANO        reduce using rule 36 (lectura -> LEER ID PUNTO_COMA .)
+    FIN_SI          reduce using rule 36 (lectura -> LEER ID PUNTO_COMA .)
+    SINO            reduce using rule 36 (lectura -> LEER ID PUNTO_COMA .)
+    FIN_MIENTRAS    reduce using rule 36 (lectura -> LEER ID PUNTO_COMA .)
+
+
+state 41
+
+    (37) escritura -> ESCRIBIR expresion PUNTO_COMA .
+
+    FIN             reduce using rule 37 (escritura -> ESCRIBIR expresion PUNTO_COMA .)
+    ID              reduce using rule 37 (escritura -> ESCRIBIR expresion PUNTO_COMA .)
+    SI              reduce using rule 37 (escritura -> ESCRIBIR expresion PUNTO_COMA .)
+    MIENTRAS        reduce using rule 37 (escritura -> ESCRIBIR expresion PUNTO_COMA .)
+    LEER            reduce using rule 37 (escritura -> ESCRIBIR expresion PUNTO_COMA .)
+    ESCRIBIR        reduce using rule 37 (escritura -> ESCRIBIR expresion PUNTO_COMA .)
+    ENTERO          reduce using rule 37 (escritura -> ESCRIBIR expresion PUNTO_COMA .)
+    REAL            reduce using rule 37 (escritura -> ESCRIBIR expresion PUNTO_COMA .)
+    CADENA          reduce using rule 37 (escritura -> ESCRIBIR expresion PUNTO_COMA .)
+    BOOLEANO        reduce using rule 37 (escritura -> ESCRIBIR expresion PUNTO_COMA .)
+    FIN_SI          reduce using rule 37 (escritura -> ESCRIBIR expresion PUNTO_COMA .)
+    SINO            reduce using rule 37 (escritura -> ESCRIBIR expresion PUNTO_COMA .)
+    FIN_MIENTRAS    reduce using rule 37 (escritura -> ESCRIBIR expresion PUNTO_COMA .)
+
+
+state 42
+
+    (16) expresion -> expresion OP_SUMA . expresion
+    (16) expresion -> . expresion OP_SUMA expresion
+    (17) expresion -> . expresion OP_RESTA expresion
+    (18) expresion -> . expresion OP_MULT expresion
+    (19) expresion -> . expresion OP_DIV expresion
+    (20) expresion -> . expresion OP_MAYOR expresion
+    (21) expresion -> . expresion OP_MENOR expresion
+    (22) expresion -> . expresion OP_IGUALDAD expresion
+    (23) expresion -> . expresion OP_DIFERENTE expresion
+    (24) expresion -> . expresion OP_Y expresion
+    (25) expresion -> . expresion OP_O expresion
+    (26) expresion -> . PAR_IZQ expresion PAR_DER
+    (27) expresion -> . NUM_ENTERO
+    (28) expresion -> . NUM_REAL
+    (29) expresion -> . CADENA_LITERAL
+    (30) expresion -> . VERDADERO
+    (31) expresion -> . FALSO
+    (32) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 29
+    NUM_ENTERO      shift and go to state 30
+    NUM_REAL        shift and go to state 31
+    CADENA_LITERAL  shift and go to state 32
+    VERDADERO       shift and go to state 33
+    FALSO           shift and go to state 34
+    ID              shift and go to state 35
+
+    expresion                      shift and go to state 56
+
+state 43
+
+    (17) expresion -> expresion OP_RESTA . expresion
+    (16) expresion -> . expresion OP_SUMA expresion
+    (17) expresion -> . expresion OP_RESTA expresion
+    (18) expresion -> . expresion OP_MULT expresion
+    (19) expresion -> . expresion OP_DIV expresion
+    (20) expresion -> . expresion OP_MAYOR expresion
+    (21) expresion -> . expresion OP_MENOR expresion
+    (22) expresion -> . expresion OP_IGUALDAD expresion
+    (23) expresion -> . expresion OP_DIFERENTE expresion
+    (24) expresion -> . expresion OP_Y expresion
+    (25) expresion -> . expresion OP_O expresion
+    (26) expresion -> . PAR_IZQ expresion PAR_DER
+    (27) expresion -> . NUM_ENTERO
+    (28) expresion -> . NUM_REAL
+    (29) expresion -> . CADENA_LITERAL
+    (30) expresion -> . VERDADERO
+    (31) expresion -> . FALSO
+    (32) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 29
+    NUM_ENTERO      shift and go to state 30
+    NUM_REAL        shift and go to state 31
+    CADENA_LITERAL  shift and go to state 32
+    VERDADERO       shift and go to state 33
+    FALSO           shift and go to state 34
+    ID              shift and go to state 35
+
+    expresion                      shift and go to state 57
+
+state 44
+
+    (18) expresion -> expresion OP_MULT . expresion
+    (16) expresion -> . expresion OP_SUMA expresion
+    (17) expresion -> . expresion OP_RESTA expresion
+    (18) expresion -> . expresion OP_MULT expresion
+    (19) expresion -> . expresion OP_DIV expresion
+    (20) expresion -> . expresion OP_MAYOR expresion
+    (21) expresion -> . expresion OP_MENOR expresion
+    (22) expresion -> . expresion OP_IGUALDAD expresion
+    (23) expresion -> . expresion OP_DIFERENTE expresion
+    (24) expresion -> . expresion OP_Y expresion
+    (25) expresion -> . expresion OP_O expresion
+    (26) expresion -> . PAR_IZQ expresion PAR_DER
+    (27) expresion -> . NUM_ENTERO
+    (28) expresion -> . NUM_REAL
+    (29) expresion -> . CADENA_LITERAL
+    (30) expresion -> . VERDADERO
+    (31) expresion -> . FALSO
+    (32) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 29
+    NUM_ENTERO      shift and go to state 30
+    NUM_REAL        shift and go to state 31
+    CADENA_LITERAL  shift and go to state 32
+    VERDADERO       shift and go to state 33
+    FALSO           shift and go to state 34
+    ID              shift and go to state 35
+
+    expresion                      shift and go to state 58
+
+state 45
+
+    (19) expresion -> expresion OP_DIV . expresion
+    (16) expresion -> . expresion OP_SUMA expresion
+    (17) expresion -> . expresion OP_RESTA expresion
+    (18) expresion -> . expresion OP_MULT expresion
+    (19) expresion -> . expresion OP_DIV expresion
+    (20) expresion -> . expresion OP_MAYOR expresion
+    (21) expresion -> . expresion OP_MENOR expresion
+    (22) expresion -> . expresion OP_IGUALDAD expresion
+    (23) expresion -> . expresion OP_DIFERENTE expresion
+    (24) expresion -> . expresion OP_Y expresion
+    (25) expresion -> . expresion OP_O expresion
+    (26) expresion -> . PAR_IZQ expresion PAR_DER
+    (27) expresion -> . NUM_ENTERO
+    (28) expresion -> . NUM_REAL
+    (29) expresion -> . CADENA_LITERAL
+    (30) expresion -> . VERDADERO
+    (31) expresion -> . FALSO
+    (32) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 29
+    NUM_ENTERO      shift and go to state 30
+    NUM_REAL        shift and go to state 31
+    CADENA_LITERAL  shift and go to state 32
+    VERDADERO       shift and go to state 33
+    FALSO           shift and go to state 34
+    ID              shift and go to state 35
+
+    expresion                      shift and go to state 59
+
+state 46
+
+    (20) expresion -> expresion OP_MAYOR . expresion
+    (16) expresion -> . expresion OP_SUMA expresion
+    (17) expresion -> . expresion OP_RESTA expresion
+    (18) expresion -> . expresion OP_MULT expresion
+    (19) expresion -> . expresion OP_DIV expresion
+    (20) expresion -> . expresion OP_MAYOR expresion
+    (21) expresion -> . expresion OP_MENOR expresion
+    (22) expresion -> . expresion OP_IGUALDAD expresion
+    (23) expresion -> . expresion OP_DIFERENTE expresion
+    (24) expresion -> . expresion OP_Y expresion
+    (25) expresion -> . expresion OP_O expresion
+    (26) expresion -> . PAR_IZQ expresion PAR_DER
+    (27) expresion -> . NUM_ENTERO
+    (28) expresion -> . NUM_REAL
+    (29) expresion -> . CADENA_LITERAL
+    (30) expresion -> . VERDADERO
+    (31) expresion -> . FALSO
+    (32) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 29
+    NUM_ENTERO      shift and go to state 30
+    NUM_REAL        shift and go to state 31
+    CADENA_LITERAL  shift and go to state 32
+    VERDADERO       shift and go to state 33
+    FALSO           shift and go to state 34
+    ID              shift and go to state 35
+
+    expresion                      shift and go to state 60
+
+state 47
+
+    (21) expresion -> expresion OP_MENOR . expresion
+    (16) expresion -> . expresion OP_SUMA expresion
+    (17) expresion -> . expresion OP_RESTA expresion
+    (18) expresion -> . expresion OP_MULT expresion
+    (19) expresion -> . expresion OP_DIV expresion
+    (20) expresion -> . expresion OP_MAYOR expresion
+    (21) expresion -> . expresion OP_MENOR expresion
+    (22) expresion -> . expresion OP_IGUALDAD expresion
+    (23) expresion -> . expresion OP_DIFERENTE expresion
+    (24) expresion -> . expresion OP_Y expresion
+    (25) expresion -> . expresion OP_O expresion
+    (26) expresion -> . PAR_IZQ expresion PAR_DER
+    (27) expresion -> . NUM_ENTERO
+    (28) expresion -> . NUM_REAL
+    (29) expresion -> . CADENA_LITERAL
+    (30) expresion -> . VERDADERO
+    (31) expresion -> . FALSO
+    (32) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 29
+    NUM_ENTERO      shift and go to state 30
+    NUM_REAL        shift and go to state 31
+    CADENA_LITERAL  shift and go to state 32
+    VERDADERO       shift and go to state 33
+    FALSO           shift and go to state 34
+    ID              shift and go to state 35
+
+    expresion                      shift and go to state 61
+
+state 48
+
+    (22) expresion -> expresion OP_IGUALDAD . expresion
+    (16) expresion -> . expresion OP_SUMA expresion
+    (17) expresion -> . expresion OP_RESTA expresion
+    (18) expresion -> . expresion OP_MULT expresion
+    (19) expresion -> . expresion OP_DIV expresion
+    (20) expresion -> . expresion OP_MAYOR expresion
+    (21) expresion -> . expresion OP_MENOR expresion
+    (22) expresion -> . expresion OP_IGUALDAD expresion
+    (23) expresion -> . expresion OP_DIFERENTE expresion
+    (24) expresion -> . expresion OP_Y expresion
+    (25) expresion -> . expresion OP_O expresion
+    (26) expresion -> . PAR_IZQ expresion PAR_DER
+    (27) expresion -> . NUM_ENTERO
+    (28) expresion -> . NUM_REAL
+    (29) expresion -> . CADENA_LITERAL
+    (30) expresion -> . VERDADERO
+    (31) expresion -> . FALSO
+    (32) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 29
+    NUM_ENTERO      shift and go to state 30
+    NUM_REAL        shift and go to state 31
+    CADENA_LITERAL  shift and go to state 32
+    VERDADERO       shift and go to state 33
+    FALSO           shift and go to state 34
+    ID              shift and go to state 35
+
+    expresion                      shift and go to state 62
+
+state 49
+
+    (23) expresion -> expresion OP_DIFERENTE . expresion
+    (16) expresion -> . expresion OP_SUMA expresion
+    (17) expresion -> . expresion OP_RESTA expresion
+    (18) expresion -> . expresion OP_MULT expresion
+    (19) expresion -> . expresion OP_DIV expresion
+    (20) expresion -> . expresion OP_MAYOR expresion
+    (21) expresion -> . expresion OP_MENOR expresion
+    (22) expresion -> . expresion OP_IGUALDAD expresion
+    (23) expresion -> . expresion OP_DIFERENTE expresion
+    (24) expresion -> . expresion OP_Y expresion
+    (25) expresion -> . expresion OP_O expresion
+    (26) expresion -> . PAR_IZQ expresion PAR_DER
+    (27) expresion -> . NUM_ENTERO
+    (28) expresion -> . NUM_REAL
+    (29) expresion -> . CADENA_LITERAL
+    (30) expresion -> . VERDADERO
+    (31) expresion -> . FALSO
+    (32) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 29
+    NUM_ENTERO      shift and go to state 30
+    NUM_REAL        shift and go to state 31
+    CADENA_LITERAL  shift and go to state 32
+    VERDADERO       shift and go to state 33
+    FALSO           shift and go to state 34
+    ID              shift and go to state 35
+
+    expresion                      shift and go to state 63
+
+state 50
+
+    (24) expresion -> expresion OP_Y . expresion
+    (16) expresion -> . expresion OP_SUMA expresion
+    (17) expresion -> . expresion OP_RESTA expresion
+    (18) expresion -> . expresion OP_MULT expresion
+    (19) expresion -> . expresion OP_DIV expresion
+    (20) expresion -> . expresion OP_MAYOR expresion
+    (21) expresion -> . expresion OP_MENOR expresion
+    (22) expresion -> . expresion OP_IGUALDAD expresion
+    (23) expresion -> . expresion OP_DIFERENTE expresion
+    (24) expresion -> . expresion OP_Y expresion
+    (25) expresion -> . expresion OP_O expresion
+    (26) expresion -> . PAR_IZQ expresion PAR_DER
+    (27) expresion -> . NUM_ENTERO
+    (28) expresion -> . NUM_REAL
+    (29) expresion -> . CADENA_LITERAL
+    (30) expresion -> . VERDADERO
+    (31) expresion -> . FALSO
+    (32) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 29
+    NUM_ENTERO      shift and go to state 30
+    NUM_REAL        shift and go to state 31
+    CADENA_LITERAL  shift and go to state 32
+    VERDADERO       shift and go to state 33
+    FALSO           shift and go to state 34
+    ID              shift and go to state 35
+
+    expresion                      shift and go to state 64
+
+state 51
+
+    (25) expresion -> expresion OP_O . expresion
+    (16) expresion -> . expresion OP_SUMA expresion
+    (17) expresion -> . expresion OP_RESTA expresion
+    (18) expresion -> . expresion OP_MULT expresion
+    (19) expresion -> . expresion OP_DIV expresion
+    (20) expresion -> . expresion OP_MAYOR expresion
+    (21) expresion -> . expresion OP_MENOR expresion
+    (22) expresion -> . expresion OP_IGUALDAD expresion
+    (23) expresion -> . expresion OP_DIFERENTE expresion
+    (24) expresion -> . expresion OP_Y expresion
+    (25) expresion -> . expresion OP_O expresion
+    (26) expresion -> . PAR_IZQ expresion PAR_DER
+    (27) expresion -> . NUM_ENTERO
+    (28) expresion -> . NUM_REAL
+    (29) expresion -> . CADENA_LITERAL
+    (30) expresion -> . VERDADERO
+    (31) expresion -> . FALSO
+    (32) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 29
+    NUM_ENTERO      shift and go to state 30
+    NUM_REAL        shift and go to state 31
+    CADENA_LITERAL  shift and go to state 32
+    VERDADERO       shift and go to state 33
+    FALSO           shift and go to state 34
+    ID              shift and go to state 35
+
+    expresion                      shift and go to state 65
+
+state 52
+
+    (26) expresion -> PAR_IZQ expresion . PAR_DER
+    (16) expresion -> expresion . OP_SUMA expresion
+    (17) expresion -> expresion . OP_RESTA expresion
+    (18) expresion -> expresion . OP_MULT expresion
+    (19) expresion -> expresion . OP_DIV expresion
+    (20) expresion -> expresion . OP_MAYOR expresion
+    (21) expresion -> expresion . OP_MENOR expresion
+    (22) expresion -> expresion . OP_IGUALDAD expresion
+    (23) expresion -> expresion . OP_DIFERENTE expresion
+    (24) expresion -> expresion . OP_Y expresion
+    (25) expresion -> expresion . OP_O expresion
+
+    PAR_DER         shift and go to state 66
+    OP_SUMA         shift and go to state 42
+    OP_RESTA        shift and go to state 43
+    OP_MULT         shift and go to state 44
+    OP_DIV          shift and go to state 45
+    OP_MAYOR        shift and go to state 46
+    OP_MENOR        shift and go to state 47
+    OP_IGUALDAD     shift and go to state 48
+    OP_DIFERENTE    shift and go to state 49
+    OP_Y            shift and go to state 50
+    OP_O            shift and go to state 51
+
+
+state 53
+
+    (15) asignacion -> ID OP_ASIG expresion PUNTO_COMA .
+
+    FIN             reduce using rule 15 (asignacion -> ID OP_ASIG expresion PUNTO_COMA .)
+    ID              reduce using rule 15 (asignacion -> ID OP_ASIG expresion PUNTO_COMA .)
+    SI              reduce using rule 15 (asignacion -> ID OP_ASIG expresion PUNTO_COMA .)
+    MIENTRAS        reduce using rule 15 (asignacion -> ID OP_ASIG expresion PUNTO_COMA .)
+    LEER            reduce using rule 15 (asignacion -> ID OP_ASIG expresion PUNTO_COMA .)
+    ESCRIBIR        reduce using rule 15 (asignacion -> ID OP_ASIG expresion PUNTO_COMA .)
+    ENTERO          reduce using rule 15 (asignacion -> ID OP_ASIG expresion PUNTO_COMA .)
+    REAL            reduce using rule 15 (asignacion -> ID OP_ASIG expresion PUNTO_COMA .)
+    CADENA          reduce using rule 15 (asignacion -> ID OP_ASIG expresion PUNTO_COMA .)
+    BOOLEANO        reduce using rule 15 (asignacion -> ID OP_ASIG expresion PUNTO_COMA .)
+    FIN_SI          reduce using rule 15 (asignacion -> ID OP_ASIG expresion PUNTO_COMA .)
+    SINO            reduce using rule 15 (asignacion -> ID OP_ASIG expresion PUNTO_COMA .)
+    FIN_MIENTRAS    reduce using rule 15 (asignacion -> ID OP_ASIG expresion PUNTO_COMA .)
+
+
+state 54
+
+    (33) condicional -> SI PAR_IZQ expresion PAR_DER . lista_instrucciones FIN_SI
+    (34) condicional -> SI PAR_IZQ expresion PAR_DER . lista_instrucciones SINO lista_instrucciones FIN_SI
+    (2) lista_instrucciones -> . lista_instrucciones instruccion
+    (3) lista_instrucciones -> . instruccion
+    (4) instruccion -> . declaracion
+    (5) instruccion -> . asignacion
+    (6) instruccion -> . condicional
+    (7) instruccion -> . ciclo
+    (8) instruccion -> . lectura
+    (9) instruccion -> . escritura
+    (10) declaracion -> . tipo_dato ID PUNTO_COMA
+    (15) asignacion -> . ID OP_ASIG expresion PUNTO_COMA
+    (33) condicional -> . SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI
+    (34) condicional -> . SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI
+    (35) ciclo -> . MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS
+    (36) lectura -> . LEER ID PUNTO_COMA
+    (37) escritura -> . ESCRIBIR expresion PUNTO_COMA
+    (11) tipo_dato -> . ENTERO
+    (12) tipo_dato -> . REAL
+    (13) tipo_dato -> . CADENA
+    (14) tipo_dato -> . BOOLEANO
+
+    ID              shift and go to state 12
+    SI              shift and go to state 13
+    MIENTRAS        shift and go to state 14
+    LEER            shift and go to state 15
+    ESCRIBIR        shift and go to state 16
+    ENTERO          shift and go to state 17
+    REAL            shift and go to state 18
+    CADENA          shift and go to state 19
+    BOOLEANO        shift and go to state 20
+
+    lista_instrucciones            shift and go to state 67
+    instruccion                    shift and go to state 4
+    declaracion                    shift and go to state 5
+    asignacion                     shift and go to state 6
+    condicional                    shift and go to state 7
+    ciclo                          shift and go to state 8
+    lectura                        shift and go to state 9
+    escritura                      shift and go to state 10
+    tipo_dato                      shift and go to state 11
+
+state 55
+
+    (35) ciclo -> MIENTRAS PAR_IZQ expresion PAR_DER . lista_instrucciones FIN_MIENTRAS
+    (2) lista_instrucciones -> . lista_instrucciones instruccion
+    (3) lista_instrucciones -> . instruccion
+    (4) instruccion -> . declaracion
+    (5) instruccion -> . asignacion
+    (6) instruccion -> . condicional
+    (7) instruccion -> . ciclo
+    (8) instruccion -> . lectura
+    (9) instruccion -> . escritura
+    (10) declaracion -> . tipo_dato ID PUNTO_COMA
+    (15) asignacion -> . ID OP_ASIG expresion PUNTO_COMA
+    (33) condicional -> . SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI
+    (34) condicional -> . SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI
+    (35) ciclo -> . MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS
+    (36) lectura -> . LEER ID PUNTO_COMA
+    (37) escritura -> . ESCRIBIR expresion PUNTO_COMA
+    (11) tipo_dato -> . ENTERO
+    (12) tipo_dato -> . REAL
+    (13) tipo_dato -> . CADENA
+    (14) tipo_dato -> . BOOLEANO
+
+    ID              shift and go to state 12
+    SI              shift and go to state 13
+    MIENTRAS        shift and go to state 14
+    LEER            shift and go to state 15
+    ESCRIBIR        shift and go to state 16
+    ENTERO          shift and go to state 17
+    REAL            shift and go to state 18
+    CADENA          shift and go to state 19
+    BOOLEANO        shift and go to state 20
+
+    lista_instrucciones            shift and go to state 68
+    instruccion                    shift and go to state 4
+    declaracion                    shift and go to state 5
+    asignacion                     shift and go to state 6
+    condicional                    shift and go to state 7
+    ciclo                          shift and go to state 8
+    lectura                        shift and go to state 9
+    escritura                      shift and go to state 10
+    tipo_dato                      shift and go to state 11
+
+state 56
+
+    (16) expresion -> expresion OP_SUMA expresion .
+    (16) expresion -> expresion . OP_SUMA expresion
+    (17) expresion -> expresion . OP_RESTA expresion
+    (18) expresion -> expresion . OP_MULT expresion
+    (19) expresion -> expresion . OP_DIV expresion
+    (20) expresion -> expresion . OP_MAYOR expresion
+    (21) expresion -> expresion . OP_MENOR expresion
+    (22) expresion -> expresion . OP_IGUALDAD expresion
+    (23) expresion -> expresion . OP_DIFERENTE expresion
+    (24) expresion -> expresion . OP_Y expresion
+    (25) expresion -> expresion . OP_O expresion
+
+    PUNTO_COMA      reduce using rule 16 (expresion -> expresion OP_SUMA expresion .)
+    OP_SUMA         reduce using rule 16 (expresion -> expresion OP_SUMA expresion .)
+    OP_RESTA        reduce using rule 16 (expresion -> expresion OP_SUMA expresion .)
+    OP_MAYOR        reduce using rule 16 (expresion -> expresion OP_SUMA expresion .)
+    OP_MENOR        reduce using rule 16 (expresion -> expresion OP_SUMA expresion .)
+    OP_IGUALDAD     reduce using rule 16 (expresion -> expresion OP_SUMA expresion .)
+    OP_DIFERENTE    reduce using rule 16 (expresion -> expresion OP_SUMA expresion .)
+    OP_Y            reduce using rule 16 (expresion -> expresion OP_SUMA expresion .)
+    OP_O            reduce using rule 16 (expresion -> expresion OP_SUMA expresion .)
+    PAR_DER         reduce using rule 16 (expresion -> expresion OP_SUMA expresion .)
+    OP_MULT         shift and go to state 44
+    OP_DIV          shift and go to state 45
+
+  ! OP_MULT         [ reduce using rule 16 (expresion -> expresion OP_SUMA expresion .) ]
+  ! OP_DIV          [ reduce using rule 16 (expresion -> expresion OP_SUMA expresion .) ]
+  ! OP_SUMA         [ shift and go to state 42 ]
+  ! OP_RESTA        [ shift and go to state 43 ]
+  ! OP_MAYOR        [ shift and go to state 46 ]
+  ! OP_MENOR        [ shift and go to state 47 ]
+  ! OP_IGUALDAD     [ shift and go to state 48 ]
+  ! OP_DIFERENTE    [ shift and go to state 49 ]
+  ! OP_Y            [ shift and go to state 50 ]
+  ! OP_O            [ shift and go to state 51 ]
+
+
+state 57
+
+    (17) expresion -> expresion OP_RESTA expresion .
+    (16) expresion -> expresion . OP_SUMA expresion
+    (17) expresion -> expresion . OP_RESTA expresion
+    (18) expresion -> expresion . OP_MULT expresion
+    (19) expresion -> expresion . OP_DIV expresion
+    (20) expresion -> expresion . OP_MAYOR expresion
+    (21) expresion -> expresion . OP_MENOR expresion
+    (22) expresion -> expresion . OP_IGUALDAD expresion
+    (23) expresion -> expresion . OP_DIFERENTE expresion
+    (24) expresion -> expresion . OP_Y expresion
+    (25) expresion -> expresion . OP_O expresion
+
+    PUNTO_COMA      reduce using rule 17 (expresion -> expresion OP_RESTA expresion .)
+    OP_SUMA         reduce using rule 17 (expresion -> expresion OP_RESTA expresion .)
+    OP_RESTA        reduce using rule 17 (expresion -> expresion OP_RESTA expresion .)
+    OP_MAYOR        reduce using rule 17 (expresion -> expresion OP_RESTA expresion .)
+    OP_MENOR        reduce using rule 17 (expresion -> expresion OP_RESTA expresion .)
+    OP_IGUALDAD     reduce using rule 17 (expresion -> expresion OP_RESTA expresion .)
+    OP_DIFERENTE    reduce using rule 17 (expresion -> expresion OP_RESTA expresion .)
+    OP_Y            reduce using rule 17 (expresion -> expresion OP_RESTA expresion .)
+    OP_O            reduce using rule 17 (expresion -> expresion OP_RESTA expresion .)
+    PAR_DER         reduce using rule 17 (expresion -> expresion OP_RESTA expresion .)
+    OP_MULT         shift and go to state 44
+    OP_DIV          shift and go to state 45
+
+  ! OP_MULT         [ reduce using rule 17 (expresion -> expresion OP_RESTA expresion .) ]
+  ! OP_DIV          [ reduce using rule 17 (expresion -> expresion OP_RESTA expresion .) ]
+  ! OP_SUMA         [ shift and go to state 42 ]
+  ! OP_RESTA        [ shift and go to state 43 ]
+  ! OP_MAYOR        [ shift and go to state 46 ]
+  ! OP_MENOR        [ shift and go to state 47 ]
+  ! OP_IGUALDAD     [ shift and go to state 48 ]
+  ! OP_DIFERENTE    [ shift and go to state 49 ]
+  ! OP_Y            [ shift and go to state 50 ]
+  ! OP_O            [ shift and go to state 51 ]
+
+
+state 58
+
+    (18) expresion -> expresion OP_MULT expresion .
+    (16) expresion -> expresion . OP_SUMA expresion
+    (17) expresion -> expresion . OP_RESTA expresion
+    (18) expresion -> expresion . OP_MULT expresion
+    (19) expresion -> expresion . OP_DIV expresion
+    (20) expresion -> expresion . OP_MAYOR expresion
+    (21) expresion -> expresion . OP_MENOR expresion
+    (22) expresion -> expresion . OP_IGUALDAD expresion
+    (23) expresion -> expresion . OP_DIFERENTE expresion
+    (24) expresion -> expresion . OP_Y expresion
+    (25) expresion -> expresion . OP_O expresion
+
+    PUNTO_COMA      reduce using rule 18 (expresion -> expresion OP_MULT expresion .)
+    OP_SUMA         reduce using rule 18 (expresion -> expresion OP_MULT expresion .)
+    OP_RESTA        reduce using rule 18 (expresion -> expresion OP_MULT expresion .)
+    OP_MULT         reduce using rule 18 (expresion -> expresion OP_MULT expresion .)
+    OP_DIV          reduce using rule 18 (expresion -> expresion OP_MULT expresion .)
+    OP_MAYOR        reduce using rule 18 (expresion -> expresion OP_MULT expresion .)
+    OP_MENOR        reduce using rule 18 (expresion -> expresion OP_MULT expresion .)
+    OP_IGUALDAD     reduce using rule 18 (expresion -> expresion OP_MULT expresion .)
+    OP_DIFERENTE    reduce using rule 18 (expresion -> expresion OP_MULT expresion .)
+    OP_Y            reduce using rule 18 (expresion -> expresion OP_MULT expresion .)
+    OP_O            reduce using rule 18 (expresion -> expresion OP_MULT expresion .)
+    PAR_DER         reduce using rule 18 (expresion -> expresion OP_MULT expresion .)
+
+  ! OP_SUMA         [ shift and go to state 42 ]
+  ! OP_RESTA        [ shift and go to state 43 ]
+  ! OP_MULT         [ shift and go to state 44 ]
+  ! OP_DIV          [ shift and go to state 45 ]
+  ! OP_MAYOR        [ shift and go to state 46 ]
+  ! OP_MENOR        [ shift and go to state 47 ]
+  ! OP_IGUALDAD     [ shift and go to state 48 ]
+  ! OP_DIFERENTE    [ shift and go to state 49 ]
+  ! OP_Y            [ shift and go to state 50 ]
+  ! OP_O            [ shift and go to state 51 ]
+
+
+state 59
+
+    (19) expresion -> expresion OP_DIV expresion .
+    (16) expresion -> expresion . OP_SUMA expresion
+    (17) expresion -> expresion . OP_RESTA expresion
+    (18) expresion -> expresion . OP_MULT expresion
+    (19) expresion -> expresion . OP_DIV expresion
+    (20) expresion -> expresion . OP_MAYOR expresion
+    (21) expresion -> expresion . OP_MENOR expresion
+    (22) expresion -> expresion . OP_IGUALDAD expresion
+    (23) expresion -> expresion . OP_DIFERENTE expresion
+    (24) expresion -> expresion . OP_Y expresion
+    (25) expresion -> expresion . OP_O expresion
+
+    PUNTO_COMA      reduce using rule 19 (expresion -> expresion OP_DIV expresion .)
+    OP_SUMA         reduce using rule 19 (expresion -> expresion OP_DIV expresion .)
+    OP_RESTA        reduce using rule 19 (expresion -> expresion OP_DIV expresion .)
+    OP_MULT         reduce using rule 19 (expresion -> expresion OP_DIV expresion .)
+    OP_DIV          reduce using rule 19 (expresion -> expresion OP_DIV expresion .)
+    OP_MAYOR        reduce using rule 19 (expresion -> expresion OP_DIV expresion .)
+    OP_MENOR        reduce using rule 19 (expresion -> expresion OP_DIV expresion .)
+    OP_IGUALDAD     reduce using rule 19 (expresion -> expresion OP_DIV expresion .)
+    OP_DIFERENTE    reduce using rule 19 (expresion -> expresion OP_DIV expresion .)
+    OP_Y            reduce using rule 19 (expresion -> expresion OP_DIV expresion .)
+    OP_O            reduce using rule 19 (expresion -> expresion OP_DIV expresion .)
+    PAR_DER         reduce using rule 19 (expresion -> expresion OP_DIV expresion .)
+
+  ! OP_SUMA         [ shift and go to state 42 ]
+  ! OP_RESTA        [ shift and go to state 43 ]
+  ! OP_MULT         [ shift and go to state 44 ]
+  ! OP_DIV          [ shift and go to state 45 ]
+  ! OP_MAYOR        [ shift and go to state 46 ]
+  ! OP_MENOR        [ shift and go to state 47 ]
+  ! OP_IGUALDAD     [ shift and go to state 48 ]
+  ! OP_DIFERENTE    [ shift and go to state 49 ]
+  ! OP_Y            [ shift and go to state 50 ]
+  ! OP_O            [ shift and go to state 51 ]
+
+
+state 60
+
+    (20) expresion -> expresion OP_MAYOR expresion .
+    (16) expresion -> expresion . OP_SUMA expresion
+    (17) expresion -> expresion . OP_RESTA expresion
+    (18) expresion -> expresion . OP_MULT expresion
+    (19) expresion -> expresion . OP_DIV expresion
+    (20) expresion -> expresion . OP_MAYOR expresion
+    (21) expresion -> expresion . OP_MENOR expresion
+    (22) expresion -> expresion . OP_IGUALDAD expresion
+    (23) expresion -> expresion . OP_DIFERENTE expresion
+    (24) expresion -> expresion . OP_Y expresion
+    (25) expresion -> expresion . OP_O expresion
+
+    PUNTO_COMA      reduce using rule 20 (expresion -> expresion OP_MAYOR expresion .)
+    OP_MAYOR        reduce using rule 20 (expresion -> expresion OP_MAYOR expresion .)
+    OP_MENOR        reduce using rule 20 (expresion -> expresion OP_MAYOR expresion .)
+    OP_IGUALDAD     reduce using rule 20 (expresion -> expresion OP_MAYOR expresion .)
+    OP_DIFERENTE    reduce using rule 20 (expresion -> expresion OP_MAYOR expresion .)
+    OP_Y            reduce using rule 20 (expresion -> expresion OP_MAYOR expresion .)
+    OP_O            reduce using rule 20 (expresion -> expresion OP_MAYOR expresion .)
+    PAR_DER         reduce using rule 20 (expresion -> expresion OP_MAYOR expresion .)
+    OP_SUMA         shift and go to state 42
+    OP_RESTA        shift and go to state 43
+    OP_MULT         shift and go to state 44
+    OP_DIV          shift and go to state 45
+
+  ! OP_SUMA         [ reduce using rule 20 (expresion -> expresion OP_MAYOR expresion .) ]
+  ! OP_RESTA        [ reduce using rule 20 (expresion -> expresion OP_MAYOR expresion .) ]
+  ! OP_MULT         [ reduce using rule 20 (expresion -> expresion OP_MAYOR expresion .) ]
+  ! OP_DIV          [ reduce using rule 20 (expresion -> expresion OP_MAYOR expresion .) ]
+  ! OP_MAYOR        [ shift and go to state 46 ]
+  ! OP_MENOR        [ shift and go to state 47 ]
+  ! OP_IGUALDAD     [ shift and go to state 48 ]
+  ! OP_DIFERENTE    [ shift and go to state 49 ]
+  ! OP_Y            [ shift and go to state 50 ]
+  ! OP_O            [ shift and go to state 51 ]
+
+
+state 61
+
+    (21) expresion -> expresion OP_MENOR expresion .
+    (16) expresion -> expresion . OP_SUMA expresion
+    (17) expresion -> expresion . OP_RESTA expresion
+    (18) expresion -> expresion . OP_MULT expresion
+    (19) expresion -> expresion . OP_DIV expresion
+    (20) expresion -> expresion . OP_MAYOR expresion
+    (21) expresion -> expresion . OP_MENOR expresion
+    (22) expresion -> expresion . OP_IGUALDAD expresion
+    (23) expresion -> expresion . OP_DIFERENTE expresion
+    (24) expresion -> expresion . OP_Y expresion
+    (25) expresion -> expresion . OP_O expresion
+
+    PUNTO_COMA      reduce using rule 21 (expresion -> expresion OP_MENOR expresion .)
+    OP_MAYOR        reduce using rule 21 (expresion -> expresion OP_MENOR expresion .)
+    OP_MENOR        reduce using rule 21 (expresion -> expresion OP_MENOR expresion .)
+    OP_IGUALDAD     reduce using rule 21 (expresion -> expresion OP_MENOR expresion .)
+    OP_DIFERENTE    reduce using rule 21 (expresion -> expresion OP_MENOR expresion .)
+    OP_Y            reduce using rule 21 (expresion -> expresion OP_MENOR expresion .)
+    OP_O            reduce using rule 21 (expresion -> expresion OP_MENOR expresion .)
+    PAR_DER         reduce using rule 21 (expresion -> expresion OP_MENOR expresion .)
+    OP_SUMA         shift and go to state 42
+    OP_RESTA        shift and go to state 43
+    OP_MULT         shift and go to state 44
+    OP_DIV          shift and go to state 45
+
+  ! OP_SUMA         [ reduce using rule 21 (expresion -> expresion OP_MENOR expresion .) ]
+  ! OP_RESTA        [ reduce using rule 21 (expresion -> expresion OP_MENOR expresion .) ]
+  ! OP_MULT         [ reduce using rule 21 (expresion -> expresion OP_MENOR expresion .) ]
+  ! OP_DIV          [ reduce using rule 21 (expresion -> expresion OP_MENOR expresion .) ]
+  ! OP_MAYOR        [ shift and go to state 46 ]
+  ! OP_MENOR        [ shift and go to state 47 ]
+  ! OP_IGUALDAD     [ shift and go to state 48 ]
+  ! OP_DIFERENTE    [ shift and go to state 49 ]
+  ! OP_Y            [ shift and go to state 50 ]
+  ! OP_O            [ shift and go to state 51 ]
+
+
+state 62
+
+    (22) expresion -> expresion OP_IGUALDAD expresion .
+    (16) expresion -> expresion . OP_SUMA expresion
+    (17) expresion -> expresion . OP_RESTA expresion
+    (18) expresion -> expresion . OP_MULT expresion
+    (19) expresion -> expresion . OP_DIV expresion
+    (20) expresion -> expresion . OP_MAYOR expresion
+    (21) expresion -> expresion . OP_MENOR expresion
+    (22) expresion -> expresion . OP_IGUALDAD expresion
+    (23) expresion -> expresion . OP_DIFERENTE expresion
+    (24) expresion -> expresion . OP_Y expresion
+    (25) expresion -> expresion . OP_O expresion
+
+    PUNTO_COMA      reduce using rule 22 (expresion -> expresion OP_IGUALDAD expresion .)
+    OP_MAYOR        reduce using rule 22 (expresion -> expresion OP_IGUALDAD expresion .)
+    OP_MENOR        reduce using rule 22 (expresion -> expresion OP_IGUALDAD expresion .)
+    OP_IGUALDAD     reduce using rule 22 (expresion -> expresion OP_IGUALDAD expresion .)
+    OP_DIFERENTE    reduce using rule 22 (expresion -> expresion OP_IGUALDAD expresion .)
+    OP_Y            reduce using rule 22 (expresion -> expresion OP_IGUALDAD expresion .)
+    OP_O            reduce using rule 22 (expresion -> expresion OP_IGUALDAD expresion .)
+    PAR_DER         reduce using rule 22 (expresion -> expresion OP_IGUALDAD expresion .)
+    OP_SUMA         shift and go to state 42
+    OP_RESTA        shift and go to state 43
+    OP_MULT         shift and go to state 44
+    OP_DIV          shift and go to state 45
+
+  ! OP_SUMA         [ reduce using rule 22 (expresion -> expresion OP_IGUALDAD expresion .) ]
+  ! OP_RESTA        [ reduce using rule 22 (expresion -> expresion OP_IGUALDAD expresion .) ]
+  ! OP_MULT         [ reduce using rule 22 (expresion -> expresion OP_IGUALDAD expresion .) ]
+  ! OP_DIV          [ reduce using rule 22 (expresion -> expresion OP_IGUALDAD expresion .) ]
+  ! OP_MAYOR        [ shift and go to state 46 ]
+  ! OP_MENOR        [ shift and go to state 47 ]
+  ! OP_IGUALDAD     [ shift and go to state 48 ]
+  ! OP_DIFERENTE    [ shift and go to state 49 ]
+  ! OP_Y            [ shift and go to state 50 ]
+  ! OP_O            [ shift and go to state 51 ]
+
+
+state 63
+
+    (23) expresion -> expresion OP_DIFERENTE expresion .
+    (16) expresion -> expresion . OP_SUMA expresion
+    (17) expresion -> expresion . OP_RESTA expresion
+    (18) expresion -> expresion . OP_MULT expresion
+    (19) expresion -> expresion . OP_DIV expresion
+    (20) expresion -> expresion . OP_MAYOR expresion
+    (21) expresion -> expresion . OP_MENOR expresion
+    (22) expresion -> expresion . OP_IGUALDAD expresion
+    (23) expresion -> expresion . OP_DIFERENTE expresion
+    (24) expresion -> expresion . OP_Y expresion
+    (25) expresion -> expresion . OP_O expresion
+
+    PUNTO_COMA      reduce using rule 23 (expresion -> expresion OP_DIFERENTE expresion .)
+    OP_MAYOR        reduce using rule 23 (expresion -> expresion OP_DIFERENTE expresion .)
+    OP_MENOR        reduce using rule 23 (expresion -> expresion OP_DIFERENTE expresion .)
+    OP_IGUALDAD     reduce using rule 23 (expresion -> expresion OP_DIFERENTE expresion .)
+    OP_DIFERENTE    reduce using rule 23 (expresion -> expresion OP_DIFERENTE expresion .)
+    OP_Y            reduce using rule 23 (expresion -> expresion OP_DIFERENTE expresion .)
+    OP_O            reduce using rule 23 (expresion -> expresion OP_DIFERENTE expresion .)
+    PAR_DER         reduce using rule 23 (expresion -> expresion OP_DIFERENTE expresion .)
+    OP_SUMA         shift and go to state 42
+    OP_RESTA        shift and go to state 43
+    OP_MULT         shift and go to state 44
+    OP_DIV          shift and go to state 45
+
+  ! OP_SUMA         [ reduce using rule 23 (expresion -> expresion OP_DIFERENTE expresion .) ]
+  ! OP_RESTA        [ reduce using rule 23 (expresion -> expresion OP_DIFERENTE expresion .) ]
+  ! OP_MULT         [ reduce using rule 23 (expresion -> expresion OP_DIFERENTE expresion .) ]
+  ! OP_DIV          [ reduce using rule 23 (expresion -> expresion OP_DIFERENTE expresion .) ]
+  ! OP_MAYOR        [ shift and go to state 46 ]
+  ! OP_MENOR        [ shift and go to state 47 ]
+  ! OP_IGUALDAD     [ shift and go to state 48 ]
+  ! OP_DIFERENTE    [ shift and go to state 49 ]
+  ! OP_Y            [ shift and go to state 50 ]
+  ! OP_O            [ shift and go to state 51 ]
+
+
+state 64
+
+    (24) expresion -> expresion OP_Y expresion .
+    (16) expresion -> expresion . OP_SUMA expresion
+    (17) expresion -> expresion . OP_RESTA expresion
+    (18) expresion -> expresion . OP_MULT expresion
+    (19) expresion -> expresion . OP_DIV expresion
+    (20) expresion -> expresion . OP_MAYOR expresion
+    (21) expresion -> expresion . OP_MENOR expresion
+    (22) expresion -> expresion . OP_IGUALDAD expresion
+    (23) expresion -> expresion . OP_DIFERENTE expresion
+    (24) expresion -> expresion . OP_Y expresion
+    (25) expresion -> expresion . OP_O expresion
+
+    PUNTO_COMA      reduce using rule 24 (expresion -> expresion OP_Y expresion .)
+    OP_Y            reduce using rule 24 (expresion -> expresion OP_Y expresion .)
+    OP_O            reduce using rule 24 (expresion -> expresion OP_Y expresion .)
+    PAR_DER         reduce using rule 24 (expresion -> expresion OP_Y expresion .)
+    OP_SUMA         shift and go to state 42
+    OP_RESTA        shift and go to state 43
+    OP_MULT         shift and go to state 44
+    OP_DIV          shift and go to state 45
+    OP_MAYOR        shift and go to state 46
+    OP_MENOR        shift and go to state 47
+    OP_IGUALDAD     shift and go to state 48
+    OP_DIFERENTE    shift and go to state 49
+
+  ! OP_SUMA         [ reduce using rule 24 (expresion -> expresion OP_Y expresion .) ]
+  ! OP_RESTA        [ reduce using rule 24 (expresion -> expresion OP_Y expresion .) ]
+  ! OP_MULT         [ reduce using rule 24 (expresion -> expresion OP_Y expresion .) ]
+  ! OP_DIV          [ reduce using rule 24 (expresion -> expresion OP_Y expresion .) ]
+  ! OP_MAYOR        [ reduce using rule 24 (expresion -> expresion OP_Y expresion .) ]
+  ! OP_MENOR        [ reduce using rule 24 (expresion -> expresion OP_Y expresion .) ]
+  ! OP_IGUALDAD     [ reduce using rule 24 (expresion -> expresion OP_Y expresion .) ]
+  ! OP_DIFERENTE    [ reduce using rule 24 (expresion -> expresion OP_Y expresion .) ]
+  ! OP_Y            [ shift and go to state 50 ]
+  ! OP_O            [ shift and go to state 51 ]
+
+
+state 65
+
+    (25) expresion -> expresion OP_O expresion .
+    (16) expresion -> expresion . OP_SUMA expresion
+    (17) expresion -> expresion . OP_RESTA expresion
+    (18) expresion -> expresion . OP_MULT expresion
+    (19) expresion -> expresion . OP_DIV expresion
+    (20) expresion -> expresion . OP_MAYOR expresion
+    (21) expresion -> expresion . OP_MENOR expresion
+    (22) expresion -> expresion . OP_IGUALDAD expresion
+    (23) expresion -> expresion . OP_DIFERENTE expresion
+    (24) expresion -> expresion . OP_Y expresion
+    (25) expresion -> expresion . OP_O expresion
+
+    PUNTO_COMA      reduce using rule 25 (expresion -> expresion OP_O expresion .)
+    OP_Y            reduce using rule 25 (expresion -> expresion OP_O expresion .)
+    OP_O            reduce using rule 25 (expresion -> expresion OP_O expresion .)
+    PAR_DER         reduce using rule 25 (expresion -> expresion OP_O expresion .)
+    OP_SUMA         shift and go to state 42
+    OP_RESTA        shift and go to state 43
+    OP_MULT         shift and go to state 44
+    OP_DIV          shift and go to state 45
+    OP_MAYOR        shift and go to state 46
+    OP_MENOR        shift and go to state 47
+    OP_IGUALDAD     shift and go to state 48
+    OP_DIFERENTE    shift and go to state 49
+
+  ! OP_SUMA         [ reduce using rule 25 (expresion -> expresion OP_O expresion .) ]
+  ! OP_RESTA        [ reduce using rule 25 (expresion -> expresion OP_O expresion .) ]
+  ! OP_MULT         [ reduce using rule 25 (expresion -> expresion OP_O expresion .) ]
+  ! OP_DIV          [ reduce using rule 25 (expresion -> expresion OP_O expresion .) ]
+  ! OP_MAYOR        [ reduce using rule 25 (expresion -> expresion OP_O expresion .) ]
+  ! OP_MENOR        [ reduce using rule 25 (expresion -> expresion OP_O expresion .) ]
+  ! OP_IGUALDAD     [ reduce using rule 25 (expresion -> expresion OP_O expresion .) ]
+  ! OP_DIFERENTE    [ reduce using rule 25 (expresion -> expresion OP_O expresion .) ]
+  ! OP_Y            [ shift and go to state 50 ]
+  ! OP_O            [ shift and go to state 51 ]
+
+
+state 66
+
+    (26) expresion -> PAR_IZQ expresion PAR_DER .
+
+    PUNTO_COMA      reduce using rule 26 (expresion -> PAR_IZQ expresion PAR_DER .)
+    OP_SUMA         reduce using rule 26 (expresion -> PAR_IZQ expresion PAR_DER .)
+    OP_RESTA        reduce using rule 26 (expresion -> PAR_IZQ expresion PAR_DER .)
+    OP_MULT         reduce using rule 26 (expresion -> PAR_IZQ expresion PAR_DER .)
+    OP_DIV          reduce using rule 26 (expresion -> PAR_IZQ expresion PAR_DER .)
+    OP_MAYOR        reduce using rule 26 (expresion -> PAR_IZQ expresion PAR_DER .)
+    OP_MENOR        reduce using rule 26 (expresion -> PAR_IZQ expresion PAR_DER .)
+    OP_IGUALDAD     reduce using rule 26 (expresion -> PAR_IZQ expresion PAR_DER .)
+    OP_DIFERENTE    reduce using rule 26 (expresion -> PAR_IZQ expresion PAR_DER .)
+    OP_Y            reduce using rule 26 (expresion -> PAR_IZQ expresion PAR_DER .)
+    OP_O            reduce using rule 26 (expresion -> PAR_IZQ expresion PAR_DER .)
+    PAR_DER         reduce using rule 26 (expresion -> PAR_IZQ expresion PAR_DER .)
+
+
+state 67
+
+    (33) condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones . FIN_SI
+    (34) condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones . SINO lista_instrucciones FIN_SI
+    (2) lista_instrucciones -> lista_instrucciones . instruccion
+    (4) instruccion -> . declaracion
+    (5) instruccion -> . asignacion
+    (6) instruccion -> . condicional
+    (7) instruccion -> . ciclo
+    (8) instruccion -> . lectura
+    (9) instruccion -> . escritura
+    (10) declaracion -> . tipo_dato ID PUNTO_COMA
+    (15) asignacion -> . ID OP_ASIG expresion PUNTO_COMA
+    (33) condicional -> . SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI
+    (34) condicional -> . SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI
+    (35) ciclo -> . MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS
+    (36) lectura -> . LEER ID PUNTO_COMA
+    (37) escritura -> . ESCRIBIR expresion PUNTO_COMA
+    (11) tipo_dato -> . ENTERO
+    (12) tipo_dato -> . REAL
+    (13) tipo_dato -> . CADENA
+    (14) tipo_dato -> . BOOLEANO
+
+    FIN_SI          shift and go to state 69
+    SINO            shift and go to state 70
+    ID              shift and go to state 12
+    SI              shift and go to state 13
+    MIENTRAS        shift and go to state 14
+    LEER            shift and go to state 15
+    ESCRIBIR        shift and go to state 16
+    ENTERO          shift and go to state 17
+    REAL            shift and go to state 18
+    CADENA          shift and go to state 19
+    BOOLEANO        shift and go to state 20
+
+    instruccion                    shift and go to state 22
+    declaracion                    shift and go to state 5
+    asignacion                     shift and go to state 6
+    condicional                    shift and go to state 7
+    ciclo                          shift and go to state 8
+    lectura                        shift and go to state 9
+    escritura                      shift and go to state 10
+    tipo_dato                      shift and go to state 11
+
+state 68
+
+    (35) ciclo -> MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones . FIN_MIENTRAS
+    (2) lista_instrucciones -> lista_instrucciones . instruccion
+    (4) instruccion -> . declaracion
+    (5) instruccion -> . asignacion
+    (6) instruccion -> . condicional
+    (7) instruccion -> . ciclo
+    (8) instruccion -> . lectura
+    (9) instruccion -> . escritura
+    (10) declaracion -> . tipo_dato ID PUNTO_COMA
+    (15) asignacion -> . ID OP_ASIG expresion PUNTO_COMA
+    (33) condicional -> . SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI
+    (34) condicional -> . SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI
+    (35) ciclo -> . MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS
+    (36) lectura -> . LEER ID PUNTO_COMA
+    (37) escritura -> . ESCRIBIR expresion PUNTO_COMA
+    (11) tipo_dato -> . ENTERO
+    (12) tipo_dato -> . REAL
+    (13) tipo_dato -> . CADENA
+    (14) tipo_dato -> . BOOLEANO
+
+    FIN_MIENTRAS    shift and go to state 71
+    ID              shift and go to state 12
+    SI              shift and go to state 13
+    MIENTRAS        shift and go to state 14
+    LEER            shift and go to state 15
+    ESCRIBIR        shift and go to state 16
+    ENTERO          shift and go to state 17
+    REAL            shift and go to state 18
+    CADENA          shift and go to state 19
+    BOOLEANO        shift and go to state 20
+
+    instruccion                    shift and go to state 22
+    declaracion                    shift and go to state 5
+    asignacion                     shift and go to state 6
+    condicional                    shift and go to state 7
+    ciclo                          shift and go to state 8
+    lectura                        shift and go to state 9
+    escritura                      shift and go to state 10
+    tipo_dato                      shift and go to state 11
+
+state 69
+
+    (33) condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI .
+
+    FIN             reduce using rule 33 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI .)
+    ID              reduce using rule 33 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI .)
+    SI              reduce using rule 33 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI .)
+    MIENTRAS        reduce using rule 33 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI .)
+    LEER            reduce using rule 33 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI .)
+    ESCRIBIR        reduce using rule 33 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI .)
+    ENTERO          reduce using rule 33 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI .)
+    REAL            reduce using rule 33 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI .)
+    CADENA          reduce using rule 33 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI .)
+    BOOLEANO        reduce using rule 33 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI .)
+    FIN_SI          reduce using rule 33 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI .)
+    SINO            reduce using rule 33 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI .)
+    FIN_MIENTRAS    reduce using rule 33 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI .)
+
+
+state 70
+
+    (34) condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO . lista_instrucciones FIN_SI
+    (2) lista_instrucciones -> . lista_instrucciones instruccion
+    (3) lista_instrucciones -> . instruccion
+    (4) instruccion -> . declaracion
+    (5) instruccion -> . asignacion
+    (6) instruccion -> . condicional
+    (7) instruccion -> . ciclo
+    (8) instruccion -> . lectura
+    (9) instruccion -> . escritura
+    (10) declaracion -> . tipo_dato ID PUNTO_COMA
+    (15) asignacion -> . ID OP_ASIG expresion PUNTO_COMA
+    (33) condicional -> . SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI
+    (34) condicional -> . SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI
+    (35) ciclo -> . MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS
+    (36) lectura -> . LEER ID PUNTO_COMA
+    (37) escritura -> . ESCRIBIR expresion PUNTO_COMA
+    (11) tipo_dato -> . ENTERO
+    (12) tipo_dato -> . REAL
+    (13) tipo_dato -> . CADENA
+    (14) tipo_dato -> . BOOLEANO
+
+    ID              shift and go to state 12
+    SI              shift and go to state 13
+    MIENTRAS        shift and go to state 14
+    LEER            shift and go to state 15
+    ESCRIBIR        shift and go to state 16
+    ENTERO          shift and go to state 17
+    REAL            shift and go to state 18
+    CADENA          shift and go to state 19
+    BOOLEANO        shift and go to state 20
+
+    lista_instrucciones            shift and go to state 72
+    instruccion                    shift and go to state 4
+    declaracion                    shift and go to state 5
+    asignacion                     shift and go to state 6
+    condicional                    shift and go to state 7
+    ciclo                          shift and go to state 8
+    lectura                        shift and go to state 9
+    escritura                      shift and go to state 10
+    tipo_dato                      shift and go to state 11
+
+state 71
+
+    (35) ciclo -> MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS .
+
+    FIN             reduce using rule 35 (ciclo -> MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS .)
+    ID              reduce using rule 35 (ciclo -> MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS .)
+    SI              reduce using rule 35 (ciclo -> MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS .)
+    MIENTRAS        reduce using rule 35 (ciclo -> MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS .)
+    LEER            reduce using rule 35 (ciclo -> MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS .)
+    ESCRIBIR        reduce using rule 35 (ciclo -> MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS .)
+    ENTERO          reduce using rule 35 (ciclo -> MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS .)
+    REAL            reduce using rule 35 (ciclo -> MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS .)
+    CADENA          reduce using rule 35 (ciclo -> MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS .)
+    BOOLEANO        reduce using rule 35 (ciclo -> MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS .)
+    FIN_SI          reduce using rule 35 (ciclo -> MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS .)
+    SINO            reduce using rule 35 (ciclo -> MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS .)
+    FIN_MIENTRAS    reduce using rule 35 (ciclo -> MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS .)
+
+
+state 72
+
+    (34) condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones . FIN_SI
+    (2) lista_instrucciones -> lista_instrucciones . instruccion
+    (4) instruccion -> . declaracion
+    (5) instruccion -> . asignacion
+    (6) instruccion -> . condicional
+    (7) instruccion -> . ciclo
+    (8) instruccion -> . lectura
+    (9) instruccion -> . escritura
+    (10) declaracion -> . tipo_dato ID PUNTO_COMA
+    (15) asignacion -> . ID OP_ASIG expresion PUNTO_COMA
+    (33) condicional -> . SI PAR_IZQ expresion PAR_DER lista_instrucciones FIN_SI
+    (34) condicional -> . SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI
+    (35) ciclo -> . MIENTRAS PAR_IZQ expresion PAR_DER lista_instrucciones FIN_MIENTRAS
+    (36) lectura -> . LEER ID PUNTO_COMA
+    (37) escritura -> . ESCRIBIR expresion PUNTO_COMA
+    (11) tipo_dato -> . ENTERO
+    (12) tipo_dato -> . REAL
+    (13) tipo_dato -> . CADENA
+    (14) tipo_dato -> . BOOLEANO
+
+    FIN_SI          shift and go to state 73
+    ID              shift and go to state 12
+    SI              shift and go to state 13
+    MIENTRAS        shift and go to state 14
+    LEER            shift and go to state 15
+    ESCRIBIR        shift and go to state 16
+    ENTERO          shift and go to state 17
+    REAL            shift and go to state 18
+    CADENA          shift and go to state 19
+    BOOLEANO        shift and go to state 20
+
+    instruccion                    shift and go to state 22
+    declaracion                    shift and go to state 5
+    asignacion                     shift and go to state 6
+    condicional                    shift and go to state 7
+    ciclo                          shift and go to state 8
+    lectura                        shift and go to state 9
+    escritura                      shift and go to state 10
+    tipo_dato                      shift and go to state 11
+
+state 73
+
+    (34) condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI .
+
+    FIN             reduce using rule 34 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI .)
+    ID              reduce using rule 34 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI .)
+    SI              reduce using rule 34 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI .)
+    MIENTRAS        reduce using rule 34 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI .)
+    LEER            reduce using rule 34 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI .)
+    ESCRIBIR        reduce using rule 34 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI .)
+    ENTERO          reduce using rule 34 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI .)
+    REAL            reduce using rule 34 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI .)
+    CADENA          reduce using rule 34 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI .)
+    BOOLEANO        reduce using rule 34 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI .)
+    FIN_SI          reduce using rule 34 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI .)
+    SINO            reduce using rule 34 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI .)
+    FIN_MIENTRAS    reduce using rule 34 (condicional -> SI PAR_IZQ expresion PAR_DER lista_instrucciones SINO lista_instrucciones FIN_SI .)
+

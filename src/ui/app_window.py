@@ -97,12 +97,16 @@ class CompiladorApp:
 
     def compilar(self):
         self.limpiar_ui()
+        # Forzar a la UI a limpiar la pantalla inmediatamente
+        self.consola.update() 
+        
         codigo_fuente = self.editor.get(1.0, tk.END).strip()
         if not codigo_fuente:
             self.log("Error: No hay código para compilar.")
             return
 
         self.log("--- Iniciando Compilación ---")
+        self.consola.update() # Refrescar UI
 
         # 1. Lexer y Parser
         lexer = obtener_lexer()
@@ -112,50 +116,73 @@ class CompiladorApp:
         try:
             ast = parser.parse(codigo_fuente, lexer=lexer)
         except Exception as e:
-            self.log(f"Error Fatal durante Análisis Sintáctico.")
+            error_msg = str(e)
+            # Detectar si es un error de programación en Python o un error del usuario en MiniLang
+            if "is not defined" in error_msg or "object has no attribute" in error_msg:
+                self.log("❌ Error INTERNO del Compilador (Python):")
+                self.log(f"-> {error_msg}")
+                self.log("💡 Sugerencia: Te falta importar una clase (ej. 'Declaracion') en parser.py.")
+            else:
+                # Si es un error de sintaxis que nosotros lanzamos, se mostrará bonito con su línea
+                self.log("❌ Error durante el Análisis Sintáctico:")
+                self.log(error_msg)
+            
+            self.log("Proceso abortado.")
+            self.consola.update() # Refrescar UI antes de salir
             return
 
         if not ast:
-            self.log("Proceso abortado por errores sintácticos (Revisar consola del sistema).")
+            self.log("❌ Error de Sintaxis: El compilador no pudo construir el árbol (AST).")
+            self.log("Sugerencia: Revisa la estructura (¿Falta 'INICIO', 'FIN', o punto y coma?).")
+            self.log("Proceso abortado.")
+            self.consola.update()
             return
         
         self.log("[OK] Análisis Léxico y Sintáctico.")
+        self.consola.update()
 
         # 2. Análisis Semántico
         semantic = SemanticAnalyzer()
         if not semantic.analyze(ast):
-            self.log("Errores Semánticos Encontrados:")
+            self.log("❌ Errores Semánticos Encontrados:")
             for err in semantic.errores:
                 self.log("  -> " + err)
             self.log("Proceso abortado.")
+            self.consola.update()
             return
         
         self.log("[OK] Análisis Semántico.")
+        self.consola.update()
         
         # Mostrar Tabla de Símbolos
         simbolos = semantic.symbol_table.get_all()
         for nombre, info in simbolos.items():
             self.tree_simbolos.insert("", tk.END, values=(nombre, info['tipo'], info['linea']))
+        self.tree_simbolos.update() # Forzar actualización de la tabla visualmente
 
         # 3. Código Intermedio
         quad_gen = QuadrupleGenerator()
         cuadruplos = quad_gen.generate(ast)
         self.log(f"[OK] Código Intermedio generado ({len(cuadruplos)} cuádruplos).")
+        self.consola.update()
 
         # 4. Optimización
         optimizer = Optimizer()
         optimizados = optimizer.optimize(cuadruplos)
         self.log(f"[OK] Optimización aplicada.")
+        self.consola.update()
 
         # Mostrar Cuádruplos
         for q in optimizados:
             self.tree_quads.insert("", tk.END, values=(q.operador, q.arg1, q.arg2, q.resultado))
+        self.tree_quads.update() # Forzar actualización visual
 
         # 5. Código Final
         cpp_gen = CppGenerator()
         codigo_cpp = cpp_gen.generate(optimizados, semantic.symbol_table)
         self.txt_codigo_final.insert(tk.END, codigo_cpp)
         self.log("[OK] Código C++ Generado con éxito.")
+        self.txt_codigo_final.update() # Forzar actualización visual
         
         # Cambiar a la pestaña de C++ para mostrar el resultado
         self.notebook.select(self.tab_final)

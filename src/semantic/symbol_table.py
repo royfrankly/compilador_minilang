@@ -1,4 +1,4 @@
-#class SymbolTable:
+class SymbolTable:
     def __init__(self):
         # El diccionario almacenará: {'nombre_variable': {'tipo': 'ENTERO', 'valor': None, 'linea_declaracion': 5}}
         self.symbols = {}
