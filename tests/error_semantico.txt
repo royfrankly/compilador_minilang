@@ -20,7 +20,8 @@ CADENA mensaje_inicio;
 CADENA mensaje_fin;
 BOOLEANO bandera_estado;
 
-// ERROR SEMÁNTICO 1: Re-declaración de una variable ya existente
+// ERROR SEMÁNTICO 1: Re-declaración de una variable ya existente 
+//poner como comentario
 ENTERO limite_inferior;
 
 // ERROR SEMÁNTICO 2: Asignación de tipos incompatibles (Número a Cadena)

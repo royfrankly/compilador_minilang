@@ -2,6 +2,7 @@ INICIO
 // ---------------------------------------------------------
 // ARCHIVO DE PRUEBA: ERROR LÉXICO
 // Contiene caracteres ilegales que no pertenecen a la gramática.
+// cambiar el #--> eliminar y @ --> * 
 // ---------------------------------------------------------
 
 ENTERO limite_inferior;

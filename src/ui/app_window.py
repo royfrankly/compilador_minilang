@@ -9,6 +9,28 @@ from src.intermediate.quad_gen import QuadrupleGenerator
 from src.intermediate.optimizer import Optimizer
 from src.codegen.cpp_gen import CppGenerator
 
+class NumerosDeLinea(tk.Canvas):
+    def __init__(self, *args, **kwargs):
+        tk.Canvas.__init__(self, *args, **kwargs)
+        self.editor = None
+
+    def conectar(self, editor):
+        self.editor = editor
+
+    def redibujar(self, *args):
+        if not self.editor: return
+        self.delete("all")
+        i = self.editor.index("@0,0")
+        while True:
+            dline = self.editor.dlineinfo(i)
+            if dline is None: 
+                break
+            y = dline[1]
+            linenum = str(i).split(".")[0]
+            # Alineación y fuente estilo VS Code
+            self.create_text(30, y, anchor="ne", text=linenum, font=("Consolas", 11), fill="#888888")
+            i = self.editor.index("%s+1line" % i)
+
 class CompiladorApp:
     def __init__(self, root):
         self.root = root
@@ -27,8 +49,27 @@ class CompiladorApp:
         main_paned.add(left_frame, weight=1)
         
         ttk.Label(left_frame, text="Editor de Código (MiniLang):").pack(anchor=tk.W)
-        self.editor = scrolledtext.ScrolledText(left_frame, wrap=tk.WORD, font=("Courier New", 12))
-        self.editor.pack(fill=tk.BOTH, expand=True, pady=5)
+        
+        # --- NUEVA CAJA DEL EDITOR (Números + Editor) ---
+        caja_editor = ttk.Frame(left_frame)
+        caja_editor.pack(fill=tk.BOTH, expand=True, pady=5)
+
+        # Panel de números (Izquierda)
+        self.numeros = NumerosDeLinea(caja_editor, width=35, bg='#f3f3f3', highlightthickness=0)
+        self.numeros.pack(side=tk.LEFT, fill=tk.Y)
+
+        # Editor de texto (Derecha)
+        self.editor = scrolledtext.ScrolledText(caja_editor, wrap=tk.WORD, font=("Consolas", 11), undo=True)
+        self.editor.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+        # Conectar números con el editor
+        self.numeros.conectar(self.editor)
+
+        # Eventos para actualizar los números automáticamente
+        eventos = ["<KeyRelease>", "<MouseWheel>", "<Configure>", "<Return>", "<BackSpace>", "<B1-Motion>"]
+        for evento in eventos:
+            self.editor.bind(evento, self.numeros.redibujar)
+        # -----------------------------------------------
         
         btn_frame = ttk.Frame(left_frame)
         btn_frame.pack(fill=tk.X)
@@ -86,6 +127,8 @@ class CompiladorApp:
                 self.editor.delete(1.0, tk.END)
                 self.editor.insert(tk.END, f.read())
             self.log(f"Archivo cargado: {filepath}")
+            # Forzamos el redibujado de los números al cargar un archivo nuevo
+            self.numeros.redibujar()
 
     def limpiar_ui(self):
         self.consola.delete(1.0, tk.END)
@@ -124,7 +167,7 @@ class CompiladorApp:
                 self.log("💡 Sugerencia: Te falta importar una clase (ej. 'Declaracion') en parser.py.")
             else:
                 # Si es un error de sintaxis que nosotros lanzamos, se mostrará bonito con su línea
-                self.log("❌ Error durante el Análisis Sintáctico:")
+                self.log("❌ Se encontró un error en el código:")
                 self.log(error_msg)
             
             self.log("Proceso abortado.")

@@ -1,5 +1,7 @@
 import ply.lex as lex
 
+class ErrorLexicoMiniLang(Exception):
+    pass
 
 # Diccionario de palabras reservadas (Case-sensitive / Mayúsculas obligatorias en MiniLang)
 reservadas = {
@@ -111,8 +113,12 @@ def t_comments(t):
 
 # Función para gestionar los errores léxicos
 def t_error(t):
-    print(f"Error Léxico: Caracter ilegal '{t.value[0]}' detectado en la línea {t.lexer.lineno}")
-    t.lexer.skip(1)
+    # Lanzamos el error exacto con el carácter que causó el problema
+    mensaje = f"❌ Error Léxico en la línea {t.lexer.lineno}.\n"
+    mensaje += f"   ➤ Carácter ilegal o no reconocido: '{t.value[0]}'\n"
+    mensaje += "   💡 Sugerencia: Elimina este carácter, no pertenece a la sintaxis de MiniLang."
+    
+    raise ErrorLexicoMiniLang(mensaje)
 
 # Función principal para instanciar y obtener el lexer
 def obtener_lexer():
